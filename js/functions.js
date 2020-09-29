@@ -1,4 +1,4 @@
-//(function () {
+(function () {
 "use strict";
 
 /**
@@ -12,9 +12,9 @@
 //var usersName = prompt("What is your name")
 //function sayHello(usersName){
 
-//    return console.log("Hello " + usersName)
+//    return ("Hello " + usersName)
 //}
-//sayHello();
+
 
 
 /**
@@ -56,9 +56,7 @@ var random = Math.floor((Math.random() * 3) + 1);
  * number)
  */
 function isTwo(number) {
-    if(number === 2)
-        return true;
-    else return false;
+    return number === 2;
 }
 isTwo(random);
 console.log(random);
@@ -75,11 +73,11 @@ console.log(isTwo(random));
  * > calculateTip(0.15, 33.42) // returns 5.013
  */
 function calculateTip(Bill=0,tip=0){
-    var Bill = parseInt(prompt("How much was your bill?"))
-    var tip = parseInt(prompt("what percentage would you like to tip?"));
+    var Bill = Number.parseFloat(prompt("How much was your total bill?"))
+    var tip = Number.parseFloat(prompt("what percentage would you like to tip? Enter a number from 1-100"));
     var tipPercent = tip * .01;
     var totalBill = (Bill + (Bill * tipPercent));
-    return console.log("You should tip " + Bill * tipPercent);
+    return console.log("You should tip " + (Bill * tipPercent).toFixed(2));
 }
 //calculateTip(0.25, 25.50);
 /**
@@ -89,7 +87,7 @@ function calculateTip(Bill=0,tip=0){
  * then display the dollar amount they should tip
  */
 
- //calculateTip();
+ calculateTip();
 
 
 
@@ -113,8 +111,8 @@ function applyDiscount(price= 0, percent = 0){
     var price = Number.parseInt(prompt("What is the original price?"));
     var percent = Number.parseFloat(prompt("what is the percent discount? (entered as 0.00)"));
     var discountPrice = price - price * percent;
-    console.log("the discounted price is " + discountPrice);
+    console.log("the discounted price is " + discountPrice.toFixed(2));
 }
 applyDiscount();
 
-//})();
+})();
