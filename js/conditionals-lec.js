@@ -291,34 +291,77 @@ var hasPermit = true;
 // }
 
 //WRITE YOUR TERNARY STATEMENT HERE!
-var weather = "sunny";
-var weatherMessage = (weather)
+// var weather = "snow";
+// var weatherMessage = (weather === "rainy") ? "rainy" : "have a nice day!";
+// console.log(weatherMessage)
 
 
 // =============== SWITCH STATEMENT ================
 //TODO Together:
 
-var pizzaPreference = prompt("What kind of pizza do you like?");
-
-switch(pizzaPreference) {
-    case "pineapple and hot sauce":
-        alert("What a coincidence, that's my favorite!");
-        break;
-    case "cheese":
-        alert("Just plain cheese? Okay...");
-        break;
-    default:
-        alert(pizzaPreference + " isn't my favorite, but let's order some!");
-        break;
-}
+// var pizzaPreference = prompt("What kind of pizza do you like?");
+//
+// switch(pizzaPreference) {
+//     case "pineapple and hot sauce":
+//         alert("What a coincidence, that's my favorite!");
+//         break;
+//     case "cheese":
+//         alert("Just plain cheese? Okay...");
+//         break;
+//     default:
+//         alert(pizzaPreference + " isn't my favorite, but let's order some!");
+//         break;
+// }
 
 
 //TODO: Write a switch statement that evaluates weather as the condition. Check for "rainy", "sunny", "snow", and a default case.
+// var weather = prompt("What is the weather today?");
+//
+// switch(weather) {
+//     case "rainy":
+//         alert("WOW THATS MOVIE TIME");
+//         break;
+//     case "sunny":
+//         alert("WOW THATS HOT!");
+//         break;
+//     case "snow":
+//         alert("WOW THATS COLD!");
+//         break;
+//     default:
+//         alert("WOW THATS CRAZY!");
+//         break;
+// }
+
+        //TODO: Rewrite the intersection function from earlier as a switch statement.
 
 
-//TODO: Rewrite the intersection function from earlier as a switch statement.
-
-
+var color = prompt("what color is the light?")
+switch(color){
+    case "red":
+        alert("YOU BETTER STOP!");
+        break;
+    case "yellow":
+        alert("YOU BETTER FLOOR IT!!!");
+        break;
+    case "green":
+        alert("KEEP ON KEEPIN ON");
+        break;
+    default:
+        alert("YOU BETTER FIND OUT")
+        break;
+}
+// function color(lightColor){
+//      if(lightColor === "red"){
+//          return console.log("You should stop");
+//      } else if(lightColor === "yellow") {
+//          return console.log("You should floor it");
+//      } else if(lightColor === "green"){
+//          return console.log("keep on keeping on");
+//      } else {
+//          return console.log("nobody knows");
+//      }
+// }
+// color("green");
 
 // ================ REVERSE ENGINEERING =================
 // Visit each of these links, outline the steps required to achieve each of these demonstrations. You can write code or just write the logic steps that would achieve each output
