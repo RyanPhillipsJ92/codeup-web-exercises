@@ -88,6 +88,12 @@
 //     i++;
 //     }
 // while (i < 10);
+
+
+// a for loop
+// for (var i = 0; i < 10; i++) {
+//     console.log('for loop iteration #' + i);
+// }
 //TODO TOGETHER: Create a do-while loop that asks the user to confirm: "Would you like to exit?" What difference do you notice?
 // do{
 //     var myOtherQuestion = confirm ("Would you like to exit?");
@@ -97,17 +103,17 @@
 
 //TODO TOGETHER: Create a do-while loop that counts up to 20 (inclusive) by 2s (0, 2, 4...)
 // (0, 2, 4...20)
-var i =0;
-do{
-    console.log(i);
-    i+=2;
-}while (i<=20);
+// var i =0;
+// do{
+//     console.log(i);
+//     i+=2;
+// }while (i<=20);
 
 //TODO: Create a do-while loop that prompts the user for a color and continues to prompt until the string passed is "blue"
-do{
-    var userColor = prompt("enter a color");
-
-}while (userColor !== "blue");
+// do{
+//     var userColor = prompt("enter a color");
+//
+// }while (userColor !== "blue");
 
 /*********************************************
  *               FOR LOOPS
@@ -122,14 +128,19 @@ do{
 
 
 // TODO TOGETHER: Write a for loop that loops through numbers 0 - 5 (inclusive);
-
+// for (initialize; condition; increment){ ============ BASIC LAYOUT
+// for (var i = 0; i <= 5; i++){
+//     console.log(i)
+// }
 
 // TODO TOGETHER: Why are loops beneficial?
-
+//to do things over and over without repeating yourself
 
 // TODO TOGETHER: Console.log each color from the array randomColors
 //  var randomColors = ["red","orange","yellow","blue","green"]
-
+// for(var i = 0; i < randomColors.length; i++){
+//     console.log(randomColors[i]);
+// }
 
 // for (var i = 0; i < randomColors.length; i++){
 // 	console.log(randomColors[i]);;
@@ -138,10 +149,18 @@ do{
 
 
 // TODO TOGETHER: Using a for loop, log all even numbers 0 - 100;
-
+for(var i = 0; i <= 100; i++){
+    if(i % 2 === 0) {
+        console.log(i);
+    }
+}
 
 // TODO: Using a for loop, log all numbers divisible by 5, from 0 - 100;
-
+for(var i = 0; i <= 100; i++){
+    if(i % 5 === 0){
+        console.log(i);
+    }
+}
 
 // TODO: Using a for loop, complete the FizzBuzz challenge:
 //  Your program should count up to 100.
@@ -149,8 +168,17 @@ do{
 //  For numbers divisible by 5, log "Buzz"
 //  If divisible by 3 and 5, log "FizzBuzz"
 //  All other cases, just log the number.
-
-
+for(var i = 1; i <= 100; i++){
+    if(i % 15 === 0){
+        console.log("FizzBuzz");
+    }else if(i % 3 === 0){
+        console.log("Fizz");
+    }else if(i % 5 === 0){
+        console.log("Buzz");
+    }else{
+        console.log(i);
+    }
+}
 
 /*********************************************
  *              BREAKS & CONTINUES
@@ -174,12 +202,12 @@ do{
 
 
 // We can get an iteration to skip using continue;
-// for (var i = 1; i < 100; i++) {
-//
-// 	if (i % 2 !== 0) {
-// 		// skipping all odd numbers;
-// 		continue;
-// 	}
-//
-// 	console.log('Here is a lovely even number: ' + i);
-// }
+for (var i = 1; i < 100; i++) {
+
+	if (i % 2 !== 0) {
+		// skipping all odd numbers;
+		continue;
+	}
+
+	console.log('Here is a lovely even number: ' + i);
+}
