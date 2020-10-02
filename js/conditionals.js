@@ -143,11 +143,11 @@ function numbers(input){
             alert("This number is Odd!");
         }
         alert("the number you entered plus 100 = " + (Number.parseFloat(userNumber) + 100));
-    if(userNumber > 0){
+        if(userNumber < 0){
         alert("Your number is Negative!");
-    }else {
-        alert("Yuor number is positive!");
-    }}
+        }else {
+        alert("Your number is positive!");
+        }}
     else {
         alert("You do not want to enter a number!")
     }
