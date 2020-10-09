@@ -8,13 +8,10 @@
         getArea: function () {
            var area = Math.PI * Math.pow(circle.radius,2);
             return area;
-
-
         },
 
         logInfo: function (doRounding) {
             if(doRounding === true) {
-
                 let rounded = Math.round(circle.getArea());
                 return console.log("Area of a circle with radius rounded: " + this.radius + ", is: " + rounded);
             }else {
