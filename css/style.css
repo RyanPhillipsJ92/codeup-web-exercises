@@ -1,12 +1,15 @@
 h1 {
-    color: greenyellow;
-    text-decoration: underline;
+    color: #b68a08;
+    text-align: center;
 }
-h3{
-    color: coral;
-    background-color: aqua;
+h2 {
+color: rebeccapurple;
+   text-decoration: underline;
 }
-.fancy-header {
-    color: purple; /* single line comment */
-    text-decoration: underline;
+
+body {
+}
+
+body {
+    background: url(/Users/ryanphillips/IdeaProjects/codeup-web-exercises/Images/computers.jpeg) silver;
 }
