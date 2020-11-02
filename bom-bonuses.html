@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+// <!--Write out JS code to enable the following functionality...-->
+// <!--&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; Jack-In-The-Box-->
+// <!--When a 'playSinging' function is called in the JS console, the following will output in the console:-->
+// <!--Each phrase should display after 1 second.-->
+// <!--A 'stopSinging' function, when called during the 'song', will stop the lyrics immdiately before finishing.-->
+// <!--EXTR BONUS: use the Web Speech API to have your computer say the lyrics-->
+// <!--&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; Build a Stop Watch-->
+// <!--Define an object called stopWatch.-->
+// <!--Include the following properties...-->
+// <!--intervalId-->
+// <!--count-->
+// <!--Include the following methods...-->
+// <!--start() - starts console logging an increasing count every second-->
+// <!--pause() - pauses counter-->
+// <!--reset() - stops counter and resets count-->
+(function() {
+    "use strict";
+
+
+    var songlyrics = ["All a-...", "-round the ...", "mulberry...", "bush, The...", "monkey...", "chased the...", "wea-...", "-sel...", "The monkey...", "stopped to...", "pull up his...", "sock,...", "Pop!...", "goes the...", "wea-...", "-sel."]
+    var maxlyrics = songlyrics.indexOf()
+    var minLyrics = 0;
+    // TODO: This function needs to be called once every second
+    function updateTimer() {
+        if (minLyrics != maxlyrics) {
+            console.log(songlyrics[minLyrics])
+            minLyrics++;
+        } else if (minLyrics == maxlyrics) {
+            clearInterval(updateTimer)
+            return "song complete";
+            minLyrics = minLyrics;
+        }
+
+
+    }
+
+    var intervalTimer = window.setInterval(updateTimer, 1000)
+
+
+})();
+</script>
+</body>
+</html>
