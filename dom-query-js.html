@@ -25,14 +25,20 @@
     culpa qui officia deserunt mollit anim id est laborum.
 </p>
 
+<button id="btn1">JS is cool</button>
+<button id="btn2">HELLO</button>
+<button id="btn3">Big JS Button</button>
+<button id="btn4">byebye button</button>
 <script>
+
+
     (function() {
-        "use strict";
+              "use strict";
         // TODO: Uncomment next line and get the main header element by id
         var mainHeader = document.getElementById('main-header');
 
-        // TODO: Set inner html of mainHeader to "JavaScript is Cool"
-        mainHeader.innerHTML = "Javascript is Cool";
+        // // TODO: Set inner html of mainHeader to "JavaScript is Cool"
+        // mainHeader.innerHTML = "Javascript is Cool";
 
         // TODO: Uncomment the next line and get the sub header element by id
         var subHeader = document.getElementById('sub-header');
@@ -59,6 +65,50 @@
 //
 //         // TODO: Change the text in the first sub paragraph to "Mission Accomplished!"
         subParagraphs[0].innerText = "Mission Accomplished";
+
+
+        //******** button 1 *****
+
+        var JsIsCool = function (event) {
+            mainHeader.innerHTML = "Javascript is Cool";
+        }
+
+        var btn1 = document.getElementById('btn1');
+        btn1.addEventListener('click', JsIsCool);
+
+        //******** button 2 *****
+
+        var helloAgainHuge = function (event) {
+            subHeader.style.fontSize = '5em';
+        }
+
+        var btn2 = document.getElementById('btn2');
+        btn2.addEventListener('click', helloAgainHuge);
+
+
+        //******** button 3 *****
+
+        var jsbutton = document.getElementById('btn1');
+
+        var bigJSButton = function (event) {
+            jsbutton.style.padding = '2em';
+        }
+
+        var btn3 = document.getElementById('btn3');
+        btn3.addEventListener('click', bigJSButton);
+
+
+        //******** button 4 *****
+
+
+        var byeBye = document.body;
+        var page = document.html;
+        var byebyeButton = function (event) {
+            byeBye.style.display = 'none';
+        }
+
+        var btn4 = document.getElementById('btn4');
+        btn4.addEventListener('click', byebyeButton);
     })();
 </script>
 </body>
