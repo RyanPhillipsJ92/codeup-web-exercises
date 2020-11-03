@@ -29,7 +29,7 @@
 
 
     var songlyrics = ["All a-...", "-round the ...", "mulberry...", "bush, The...", "monkey...", "chased the...", "wea-...", "-sel...", "The monkey...", "stopped to...", "pull up his...", "sock,...", "Pop!...", "goes the...", "wea-...", "-sel."]
-    var maxlyrics = songlyrics.lastIndexOf();
+    var maxlyrics = songlyrics.length;
     var minLyrics = 0;
     // TODO: This function needs to be called once every second
     function updateTimer() {
@@ -37,9 +37,8 @@
             console.log(songlyrics[minLyrics])
             minLyrics++;
         } else if (minLyrics == maxlyrics) {
-            clearInterval(updateTimer)
             return "song complete";
-            minLyrics = minLyrics;
+            clearInterval(updateTimer)
         }
 
         return  true;
