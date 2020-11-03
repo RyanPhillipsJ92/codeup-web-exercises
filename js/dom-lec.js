@@ -1,6 +1,6 @@
 "use strict";
 
-console.log("test");
+// console.log("test");
 
 // ========== Retrieve elements by id, class, tag name
 
@@ -55,7 +55,7 @@ console.log("test");
 // // ========== Accessing and modifying elements and properties
 //
 // // get value of innerHTML
-    var title = document.getElementById("main-title");
+//     var title = document.getElementById("main-title");
     // console.log(title);
     // console.log(title.innerHTML);
     // console.log(title.innerText);
@@ -67,11 +67,13 @@ console.log("test");
 //     title.innerText = "<em>Hi MOM!</em>";
 //
 // // append value to innerText (works the same with innerHTML)
-title.innerHTML += "<h1> ...and hi Mom!</h1>";
+// title.innerHTML += "<h1> ...and hi Mom!</h1>";
 //
 //
 // // ========== Accessing and modifying attributes
-//
+// hasAttribute
+// getAttribute
+// setAttribute
 // // check if attribute exists
 //     var cowboy = document.getElementById('cowboy');
 //     console.log(cowboy.hasAttribute('data-1'));
