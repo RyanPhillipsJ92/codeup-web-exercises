@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
+    <script src="js/keys.js"></script>
+    <title>Mapbox API Exercise</title>
+
+</head>
+<body>
+    <div id='map' style='width: 100%; height: 600px;'></div>
+        <script>
+
+            geocode("Georgetown", mapboxToken).then(function(results) {
+                mapboxgl.accessToken = mapboxToken;
+                var map = new mapboxgl.Map({
+                    container: 'map',
+                    style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location
+                    center: results, // starting position [lng, lat]
+                    zoom: 12 // starting zoom
+                });
+            })
+            //******* Geocode function **************//
+            function geocode(search, token) {
+                var baseUrl = 'https://api.mapbox.com';
+                var endPoint = '/geocoding/v5/mapbox.places/';
+                return fetch(baseUrl + endPoint + encodeURIComponent(search) + '.json' + "?" + 'access_token=' + token)
+                    .then(function(res) {
+                        return res.json();
+                        // to get all the data from the request, comment out the following three lines...
+                    }).then(function(data) {
+                        return data.features[0].center;
+                    });
+            }
+
+
+            var markerOptions = {
+                color: "#FF0000",
+                draggable: true
+            }
+
+            var jerseyMikesMarker = new mapboxgl.Marker(markerOptions)
+
+            geocode("904 W University Ave Bldg. A, Unit 105, Georgetown, TX 78626", mapboxToken).then(function(results) {
+                mapboxgl.accessToken = mapboxToken;
+                console.log(results)
+                // jerseyMikesMarker.setLngLat(results)
+                // jerseyMikesMarker.addTo(map);
+                });
+            // var jerseyMikes = new mapboxgl.Marker(markerOptions)
+            //     .setLngLat(geocode('904 W University Ave Bldg. A, Unit 105, Georgetown, TX 78626',mapboxToken))
+            //     .addTo(map);
+        //    ***************** END GEOCODE FUNCTION
+
+        </script>
+
+</body>
+</html>
