@@ -1327,3 +1327,117 @@ assert(getUniqueValues(["ant", "ant", "mosquito", "mosquito", "ladybug"]), ["ant
 assert(getUniqueValues(["b", "a", "n", "a", "n", "a", "s"]), ["b", "a", "n", "s"], "Exercise 83");
 assert(getUniqueValues(["mary", "had", "a", "little", "lamb", "little", "lamb", "little", "lamb"]), ["mary", "had", "a", "little", "lamb"], "Exercise 83");
 addToDone("Exercise 83 is correct.")
+
+
+// Exercise 84
+// Write a function definition named elementsTimesTwo that takes in an array of numbers and returns an array with each value multiplied by 2.
+
+function elementsTimesTwo(arrays){
+    arrays.forEach(function (array){
+        array = array*2;
+    })
+    return arrays;
+}
+assert(elementsTimesTwo([1, 2, 3]), [2, 4, 6], "Exercise 84")
+assert(elementsTimesTwo([0, 0, 0]), [0, 0, 0], "Exercise 84")
+assert(elementsTimesTwo([5, 10, 15]), [10, 20, 30], "Exercise 84")
+addToDone("Exercise 84 is correct.")
+
+
+// Exercise 85
+// Write a function named flatten that takes in an array of arrays. Return the flattened array.
+function flatten(arrays){
+    const merge3 = arrays.flat(1); //The depth level specifying how deep a nested array structure should be flattened. Defaults to 1.
+    return merge3;
+}
+
+
+assert(flatten([[1, 2], [3, 4], [5, 6]]), [1, 2, 3, 4, 5, 6], "Exercise 85");
+assert(flatten([[1, 2, 3], [1, 2, 3], [1, 2, 3]]), [1, 2, 3, 1, 2, 3, 1, 2, 3], "Exercise 85");
+assert(flatten([["tomato", "mango", "kiwi"], ["eggplant", "broccoli"]]), ["tomato", "mango", "kiwi", "eggplant", "broccoli"], "Exercise 85");
+addToDone("Exercise 85 is correct.")
+
+
+
+// Exercise 86
+// Write a function definition named addOneToArray that adds one to every number in an array
+function addOneToArray(arrays){
+    arrays.forEach(function (array){
+        array = array +=1
+    })
+    return addOneToArray;
+}
+assert(addOneToArray([1, 2, 3]), [2, 3, 4], "Exercise 86");
+assert(addOneToArray([4, 4, 4]), [5, 5, 5], "Exercise 86");
+assert(addOneToArray([9, 10, 11]), [10, 11, 12], "Exercise 86");
+addToDone("Exercise 86 is correct.")
+
+
+// Working with JS Objects
+
+// The following objects
+const tukeyPaper = {
+    "title": "The Future of Data Analysis",
+    "author": "John W. Tukey",
+    "link": "https://projecteuclid.org/euclid.aoms/1177704711",
+    "year_published": 1962
+}
+
+const thomasPaper = {
+    "title": "A mathematical model of glutathione metabolism",
+    "author": "Rachel Thomas",
+    "link": "https://www.ncbi.nlm.nih.gov/pubmed/18442411",
+    "year_published": 2008
+}
+
+
+// Exercise 87
+// Write a function named getPaperTitle that takes in a object and returns the title property
+function getPaperTitle(object){
+    return this.title;
+
+}
+assert(getPaperTitle(tukeyPaper), "The Future of Data Analysis", "Exercise 87");
+assert(getPaperTitle(thomasPaper), "A mathematical model of glutathione metabolism", "Exercise 87");
+addToDone("Exercise 87 is correct.")
+
+
+// Exercise 88
+// Write a function named getYearPublished that takes in an objects and returns the value behind the "year_published" key.
+function getYearPublished (object){
+    return this.year_published;
+
+}
+assert(getYearPublished(tukeyPaper), 1962, "Exercise 88");
+assert(getYearPublished(thomasPaper), 2008, "Exercise 88");
+addToDone("Exercise 88 is correct.")
+
+
+// this code defines a JS object with information about a book.
+const book = {
+    "title": "Genetic Algorithms and Machine Learning for Programmers",
+    "price": 36.99,
+    "author": "Frances Buontempo"
+}
+
+// Exercise 89
+// Write a function named getPrice that takes in a object and returns the price
+function getPrice(object){
+    return book.price;
+
+}
+assert(getPrice(book), 36.99, "Exercise 89");
+addToDone("Exercise 89 is complete.")
+
+
+
+// Exercise 90
+// Write a function named getBookAuthor that takes in a object (the above declared book variable) and returns the author's name
+function getBookAuthor(object){
+    return book.author;
+}
+
+assert(getBookAuthor(book), "Frances Buontempo", "Exercise 90");
+addToDone("Exercise 90 is complete.")
+
+
