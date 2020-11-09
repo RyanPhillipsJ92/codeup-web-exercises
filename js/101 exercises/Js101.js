@@ -987,3 +987,343 @@ assert(median([1, 5, 6]), 5.0, "Exercise 62");
 assert(median([1, 2, 5, 6]), 3.5, "Exercise 62");
 addToDone("Exercise 62 is correct.")
 
+
+
+// Exercise 63
+// Write a function definition named maxMinusMin that takes in an array of numbers and returns the difference of the maximum minus theminimum.
+function maxMinusMin(numbers){
+    var min = numbers[0];
+    var max = numbers[0];
+    numbers.forEach(function(number){
+        if(number < min) min = number;
+        else if(number > max) max = number;
+    })
+    return max - min;
+}
+
+assert(maxMinusMin([1, 2, 2, 8, 3, 4]), 7, "Exercise 63");
+assert(maxMinusMin([1, 1, 2, 3, 9]), 8, "Exercise 63");
+assert(maxMinusMin([2, 2, 3, 3, 3, 7]), 5, "Exercise 63");
+addToDone("Exercise 63 is correct.")
+
+
+// Exercise 64
+// Write a function definition named productOfAll that takes in sequence of numbers and returns the product of multiplying all the numbers together
+function productOfAll(numbers){
+    var total = 1;
+    numbers.forEach(function(number){
+        total = total * number;
+    })
+    return total;
+}
+assert(productOfAll([1, 2, 3]), 6, "Exercise 64");
+assert(productOfAll([3, 4, 5]), 60, "Exercise 64");
+assert(productOfAll([2, 2, 3, 0]), 0, "Exercise 64");
+addToDone("Exercise 64 is correct.")
+
+
+// Exercise 65
+// Write a function definition named getHighestNumber that takes in sequence of numbers and returns the largest number.
+function getHighestNumber(numbers){
+    var total = 0;
+    numbers.forEach(function(number){
+        if(number > total)total = number;
+    })
+    return total;
+}
+
+assert(getHighestNumber([1, 2, 3]), 3, "Exercise 65");
+assert(getHighestNumber([1, 5, 2, 3, 4]), 5, "Exercise 65");
+assert(getHighestNumber([5, 1, 2, 4, 9]), 9, "Exercise 65");
+addToDone("Exercise 65 is correct.")
+
+
+
+
+// Exercise 66
+// Write a function definition named getSmallestNumber that takes in sequence of numbers and returns the smallest number.
+
+function getSmallestNumber(numbers){
+    var total = numbers[0];
+    numbers.forEach(function(number){
+        if(number < total)total = number;
+    })
+    return total;
+}
+
+assert(getSmallestNumber([1, 2, 3]), 1, "Exercise 66");
+assert(getSmallestNumber([3, 5, 9, 8, 1]), 1, "Exercise 66");
+assert(getSmallestNumber([8, 9, 4, 5, 7]), 4, "Exercise 66");
+addToDone("Exercise 66 is correct.")
+
+
+// Exercise 67
+// Write a function definition named onlyOddNumbers that takes in sequence of numbers and returns the odd numbers in an array.
+function onlyOddNumbers(numbers){
+    var total = [];
+    numbers.forEach(function(number){
+        if(number % 2 !== 0)total.push(number);
+    })
+    return total;
+}
+
+assert(onlyOddNumbers([1, 2, 3]), [1, 3], "Exercise 67");
+assert(onlyOddNumbers([-5, -4, -3, -2, -1, 1, 2, 3, 4, 5]), [-5, -3, -1, 1, 3, 5], "Exercise 67");
+assert(onlyOddNumbers([-4, -3, 1]), [-3, 1], "Exercise 67");
+addToDone("Exercise 67 is correct.")
+
+
+
+// Exercise 68
+// Write a function definition named onlyEvenNumbers that takes in sequence of numbers and returns the even numbers in an array.
+function onlyEvenNumbers(numbers){
+    var total = [];
+    numbers.forEach(function(number){
+        if(number % 2 === 0)total.push(number);
+
+    })
+    return total;
+}
+assert(onlyEvenNumbers([1, 2, 3]), [2], "Exercise 68");
+assert(onlyEvenNumbers([-5, -4, -3, -2, -1, 1, 2, 3, 4, 5]), [-4, -2, 2, 4], "Exercise 68");
+assert(onlyEvenNumbers([-4, -3, 1]), [-4], "Exercise 68");
+addToDone("Exercise 68 is correct.")
+
+
+// Exercise 69
+// Write a function definition named onlyPositiveNumbers that takes in sequence of numbers and returns the positive numbers in an array.
+function onlyPositiveNumbers(numbers){
+    var total = [];
+    numbers.forEach(function(number){
+        if(number > 0)total.push(number);
+    })
+    return total;
+}
+assert(onlyPositiveNumbers([1, 2, 3]), [1, 2, 3], "Exercise 69");
+assert(onlyPositiveNumbers([-5, -4, -3, -2, -1, 1, 2, 3, 4, 5]), [1, 2, 3, 4, 5], "Exercise 69");
+assert(onlyPositiveNumbers([-4, -3, 1]), [1], "Exercise 69");
+addToDone("Exercise 69 is correct.")
+
+
+// Exercise 70
+// Write a function definition named onlyNegativeNumbers that takes in sequence of numbers and returns the negative numbers in an array.
+function onlyNegativeNumbers(numbers){
+    var total = [];
+    numbers.forEach(function(number){
+        if(number < 0)total.push(number);
+    })
+    return total;
+}
+assert(onlyNegativeNumbers([1, 2, 3]), [], "Exercise 70");
+assert(onlyNegativeNumbers([-5, -4, -3, -2, -1, 1, 2, 3, 4, 5]), [-5, -4, -3, -2, -1], "Exercise 70");
+assert(onlyNegativeNumbers([-4, -3, 1]), [-4, -3], "Exercise 70");
+addToDone("Exercise 70 is correct.");
+
+
+
+// Exercise 71
+// Write a function definition named hasEvens that takes in sequence of numbers and returns true if there are any even numbers in the sequence
+function hasEvens(numbers){
+    var yesOrNo = false;
+    numbers.forEach(function(number){
+        if(number % 2 === 0)yesOrNo = true;
+    })
+    return yesOrNo;
+}
+assert(hasEvens([1, 2, 3]), true, "Exercise 71");
+assert(hasEvens([2, 5, 6]), true, "Exercise 71");
+assert(hasEvens([3, 3, 3]), false, "Exercise 71");
+assert(hasEvens([]), false, "Exercise 71");
+addToDone("Exercise 71 is correct.");
+
+
+
+// Exercise 72
+// Write a function definition named countEvens that takes in sequence of numbers and returns the number of even numbers
+function countEvens(numbers){
+    var total = 0;
+    numbers.forEach(function(number){
+        if(number % 2 === 0)total++;
+    })
+    return total;
+}
+assert(countEvens([1, 2, 3]), 1, "Exercise 72");
+assert(countEvens([2, 5, 6]), 2, "Exercise 72");
+assert(countEvens([3, 3, 3]), 0, "Exercise 72");
+assert(countEvens([5, 6, 7, 8] ), 2, "Exercise 72");
+addToDone("Exercise 72 is correct.")
+
+
+// Exercise 73
+// Write a function definition named hasOdds that takes in sequence of numbers and returns true if there are any odd numbers in the sequence
+function hasOdds(numbers){
+    var yesOrNo = false;
+    numbers.forEach(function(number){
+        if(number % 2 !== 0)yesOrNo = true;
+    })
+    return yesOrNo;
+}
+assert(hasOdds([1, 2, 3]), true, "Exercise 73");
+assert(hasOdds([2, 5, 6]), true, "Exercise 73");
+assert(hasOdds([3, 3, 3]), true, "Exercise 73");
+assert(hasOdds([2, 4, 6]), false, "Exercise 73");
+addToDone("Exercise 73 is correct.")
+
+
+// Exercise 74
+// Write a function definition named countOdds that takes in sequence of numbers and returns a count of the any odd numbers in the sequence
+function countOdds(numbers){
+    var total = 0;
+    numbers.forEach(function(number){
+        if(number % 2 !== 0)total++;
+    })
+    return total;
+}
+assert(countOdds([1, 2, 3]), 2, "Exercise 74");
+assert(countOdds([2, 5, 6]), 1, "Exercise 74");
+assert(countOdds([3, 3, 3]), 3, "Exercise 74");
+assert(countOdds([2, 4, 6]), 0, "Exercise 74");
+addToDone("Exercise 74 is correct.")
+
+
+// Exercise 75
+// Write a function definition named countNegatives that takes in sequence of numbers and returns a count of the number of negative numbers
+function countNegatives(numbers){
+    var total = 0;
+    numbers.forEach(function(number){
+        if(number < 0)total++;
+    })
+    return total;
+}
+assert(countNegatives([1, -2, 3]), 1, "Exercise 75");
+assert(countNegatives([2, -5, -6]), 2, "Exercise 75");
+assert(countNegatives([3, 3, 3]), 0, "Exercise 75");
+addToDone("Exercise 75 is correct.")
+
+
+// Exercise 76
+// Write a function definition named countPositives that takes in sequence of numbers and returns a count of the number of positive numbers
+function countPositives(numbers){
+    var total = 0;
+    numbers.forEach(function(number){
+        if(number > 0)total++;
+    })
+    return total;
+}
+assert(countPositives([1, -2, 3]), 2, "Exercise 76");
+assert(countPositives([2, -5, -6]), 1, "Exercise 76");
+assert(countPositives([3, 3, 3]), 3, "Exercise 76");
+assert(countPositives([-2, -1, -5]), 0, "Exercise 76");
+addToDone("Exercise 76 is correct.")
+
+
+// Exercise 77
+// Write a function definition named onlyPositiveEvens that takes in sequence of numbers and returns an array containing all the positive evens from the sequence
+function onlyPositiveEvens(numbers){
+    var total = [];
+    numbers.forEach(function(number){
+        if(number > 0 && number % 2 === 0)total.push(number);
+    })
+    return total;
+}
+assert(onlyPositiveEvens([1, -2, 3]), [], "Exercise 77");
+assert(onlyPositiveEvens([2, -5, -6]), [2], "Exercise 77");
+assert(onlyPositiveEvens([3, 3, 4, 6]), [4, 6], "Exercise 77");
+assert(onlyPositiveEvens([2, 3, 4, -1, -5]), [2, 4], "Exercise 77");
+addToDone("Exercise 77 is correct.")
+
+
+// Exercise 78
+// Write a function definition named onlyPositiveOdds that takes in sequence of numbers and returns an array containing all the positive odd numbers from the sequence
+function onlyPositiveOdds(numbers){
+    var total = [];
+    numbers.forEach(function(number){
+        if(number > 0 && number % 2 !== 0)total.push(number);
+    })
+    return total;
+}
+assert(onlyPositiveOdds([1, -2, 3]), [1, 3], "Exercise 78");
+assert(onlyPositiveOdds([2, -5, -6]), [], "Exercise 78");
+assert(onlyPositiveOdds([3, 3, 4, 6]), [3, 3], "Exercise 78");
+assert(onlyPositiveOdds([2, 3, 4, -1, -5]), [3], "Exercise 78");
+addToDone("Exercise 78 is correct.")
+
+
+// Exercise 79
+// Write a function definition named onlyNegativeEvens that takes in sequence of numbers and returns an array containing all the negative even numbers from the sequence
+function onlyNegativeEvens(numbers){
+    var total = [];
+    numbers.forEach(function(number){
+        if(number < 0 && number % 2 === 0)total.push(number);
+    })
+    return total;
+}
+assert(onlyNegativeEvens([1, -2, 3]), [-2], "Exercise 79");
+assert(onlyNegativeEvens([2, -5, -6]), [-6], "Exercise 79");
+assert(onlyNegativeEvens([3, 3, 4, 6]), [], "Exercise 79");
+assert(onlyNegativeEvens([-2, 3, 4, -1, -4]), [-2, -4], "Exercise 79");
+addToDone("Exercise 79 is correct.")
+
+
+// Exercise 80
+// Write a function definition named onlyNegativeOdds that takes in sequence of numbers and returns an array containing all the negative odd numbers from the sequence
+function onlyNegativeOdds(numbers){
+    var total = [];
+    numbers.forEach(function(number){
+        if(number < 0 && number % 2 !== 0)total.push(number);
+    })
+    return total;
+}
+assert(onlyNegativeOdds([1, -2, 3]), [], "Exercise 80");
+assert(onlyNegativeOdds([2, -5, -6]), [-5], "Exercise 80");
+assert(onlyNegativeOdds([3, 3, 4, 6]), [], "Exercise 80");
+assert(onlyNegativeOdds([2, -3, 4, -1, -4]), [-3, -1], "Exercise 80");
+addToDone("Exercise 80 is correct.")
+
+
+// Exercise 81
+// Write a function definition named shortestString that takes in an array of strings and returns the shortest string in the array.
+function shortestString(strings){
+    var shortestLength = strings[0].length;
+    var shortest = strings[0];
+    strings.forEach(function(string){
+        if(string.length < shortestLength)shortest = string;
+    })
+    return shortest;
+}
+assert(shortestString(["kiwi", "mango", "strawberry"]), "kiwi", "Exercise 81");
+assert(shortestString(["hello", "everybody"]), "hello", "Exercise 81");
+assert(shortestString(["mary", "had", "a", "little", "lamb"]), "a", "Exercise 81");
+addToDone("Exercise 81 is correct.")
+
+
+// Exercise 82
+// Write a function definition named longestString that takes in sequence of strings and returns the longest string in the array.
+function longestString(strings){
+    var longestLength = strings[0].length;
+    var longest = strings[0];
+    strings.forEach(function(string){
+        if(string.length > longestLength)longest = string;
+    })
+    return longest;
+}
+assert(longestString(["kiwi", "mango", "strawberry"]), "strawberry", "Exercise 82");
+assert(longestString(["hello", "everybody"]), "everybody", "Exercise 82");
+assert(longestString(["mary", "had", "a", "little", "lamb"]), "little", "Exercise 82");
+addToDone("Exercise 82 is correct.")
+
+
+// Exercise 83
+// Write a function definition named getUniqueValues that takes in an array and returns an with only the unique values from that array.
+function getUniqueValues(arrays){
+    var unique = [];
+    arrays.forEach(function (array){
+        if(unique.indexOf(array)=== -1)
+            unique.push(array);
+    })
+    return unique;
+}
+assert(getUniqueValues(["ant", "ant", "mosquito", "mosquito", "ladybug"]), ["ant", "mosquito", "ladybug"], "Exercise 83");
+assert(getUniqueValues(["b", "a", "n", "a", "n", "a", "s"]), ["b", "a", "n", "s"], "Exercise 83");
+assert(getUniqueValues(["mary", "had", "a", "little", "lamb", "little", "lamb", "little", "lamb"]), ["mary", "had", "a", "little", "lamb"], "Exercise 83");
+addToDone("Exercise 83 is correct.")
