@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jquery</title>
+</head>
+<body>
+<h1 id="heading" class="heading">Hello everybody</h1>
+<p id="page" class="page">How are you?</p>
+<ul id="theList" class="theList">
+    <li id="listItems1" class="codeup">yes</li>
+    <li id="listItem2" class="codeup">no</li>
+    <li id="listItems3" class="codeup">Maybe</li>
+</ul>
+<div id="thisIsADiv" class="thisIsADiv">
+    This is a div
+</div>
+<script src="js/jquery-2.2.4.js"></script>
+<!--<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>-->
+<script>
+    $(document).ready(function (){
+    //     alert("The Dom has finished loading")
+    // "use strict";
+    // <!--    Wraps code in function to protect code from global scope-->
+    //Wait to run your code until dom is fully loaded but pictures are loaded up
+        $('.codeup').css('font-size', '20px')
+        $('h1, p, li').css('color', 'yellow');
+        alert($('h1'));
+    });
+</script>
+</body>
+</html>
