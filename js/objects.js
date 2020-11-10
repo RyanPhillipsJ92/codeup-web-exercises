@@ -163,10 +163,10 @@ shoppers.forEach(function (shopper){
      *   outputs the information described above. Refactor your loop to use your
      *   `showBookInfo` function.
      */
-function createBook(inputTitle, inputAuthor){
+function createBook(inputTitle, inputAuthor,){
     books.title === inputTitle;
     book.author = {
-        firstName =
+        firstName: "bob",
     }}
 
 })();
