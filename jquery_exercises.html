@@ -10,6 +10,8 @@
 <body>
 <h1 id="heading" class="heading">Hello everybody</h1>
 <p id="page" class="page">How are you?</p>
+<p id="page1" class="page">How are you?</p>
+<p id="page2" class="page">How are you?</p>
 <ul id="theList" class="theList">
     <li id="listItems1" class="codeup">yes</li>
     <li id="listItem2" class="codeup">no</li>
@@ -26,9 +28,34 @@
     // "use strict";
     // <!--    Wraps code in function to protect code from global scope-->
     //Wait to run your code until dom is fully loaded but pictures are loaded up
-        $('.codeup').css('font-size', '20px')
-        $('h1, p, li').css('color', 'yellow');
-        alert($('h1'));
+
+
+        // Remove your custom jQuery code from previous exercises.
+        //
+
+        //     Add jQuery code that will change the background color of an h1 element when clicked.
+                $('h1').dblclick(function(e) {
+                    $('h1').css("background", "yellow");
+                });
+        //     Make all paragraphs have a font size of 18px when they are double clicked.
+              $('p').dblclick(function() {
+                $('p').css("font-size", "18px");
+              });
+
+    //     Set all li text color to red when the mouse is hovering; reset to black when it is not.
+            $('li').hover(function() {
+                $('li').css('color', 'red');
+            }, function() {
+                $('li').css('color', 'black');
+            });
+
+
+
+        // $('.box').hover(function() {
+        //     $(this).css('background', 'grey');
+        // }, function() {
+        //     $(this).css('background', 'red');
+        // });
     });
 </script>
 </body>

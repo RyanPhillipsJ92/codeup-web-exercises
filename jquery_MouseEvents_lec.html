@@ -90,12 +90,17 @@
 
         // Double click and using "this" or "e.target"
 
-        $('#box').dblclick(function() {
-            console.log(this);
-            $(this).css("background", "green");
-        });
+        // $('#box').dblclick(function() {
+        //     console.log(this);
+        //     $(this).css("background", "green");
+        // });
+        //
+        // $('p').dblclick(function() {
+        //     console.log(this);
+        //     $('p').css("color", "blue");
+        // });
 
-        // $('li').dblclick(function(e) {
+        // $('p').dblclick(function(e) {
         //     // console.log(e.target);
         //     $(e.target).css("background", "yellow");
         // });
@@ -123,6 +128,10 @@
             - clicking on a paragraph will change the text to 'Howdy!'
             - hovering over the sub header makes the letters turn to uppercase while hovering over
         */
+        $('#box').dblclick(function(e) {
+            $('#box').css("background", "yellow");
+        });
+
 
     });
 
