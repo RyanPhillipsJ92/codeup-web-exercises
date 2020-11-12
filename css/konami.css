@@ -1,0 +1,9 @@
+#Gif {
+    display: none;
+    justify-content: center;
+
+}
+#Gif>img {
+   height: 75vh;
+    width: 75vh;
+}
