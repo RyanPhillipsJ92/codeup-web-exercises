@@ -5,21 +5,44 @@
 </head>
 <body>
 <h1>Konami Code</h1>
-
+<div id="lifeMeter">
+    <h3>lives remaining :</h3>
+        <div id="lives"></div>
+</div>
 <div id="Gif">
     <img src="Notes/Images/img/mariogiphy.gif">
+    <img src="Notes/Images/img/wonka.giphy.gif">
 </div>
 <script src="js/jquery-2.2.4.js"></script>
 
 <script>
     "use strict";
+    var numOfLives = 3;
+    var lives = $(document.getElementById('lives'))
+    lives.html(numOfLives);
+
     var konami =[];
     var knownGood = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65, 13]
     $(document).keyup(function(event){
         konami.push(event.keyCode)
+        if (konami.length > 12) {
+            konami = [];
+            numOfLives -=1;
+            lives.html(numOfLives);
+            if(numOfLives === 0){
+                $('#Gif>img:last-child').css('display', 'flex');
+                $('#Gif>img:first-child').css('display', 'none');
+            }
+        } else if(event.keyCode === 27) {
+            konami = [];
+        }
         if(JSON.stringify(konami)==JSON.stringify(knownGood)) {
-            $('#Gif').css('display', 'flex');
+            $('#Gif>img:last-child').css('display', 'none');
+            $('#Gif>img:first-child').css('display', 'flex');
+            numOfLives +=30;
             alert("You have added 30 lives");
+            lives.html(numOfLives);
+            konami = []
         }
         console.log(event.keyCode);
         console.log(konami)

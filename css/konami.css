@@ -1,4 +1,9 @@
-#Gif {
+#Gif>img:first-child {
+    display: none;
+    justify-content: center;
+
+}
+#Gif>img:last-child{
     display: none;
     justify-content: center;
 
@@ -6,4 +11,13 @@
 #Gif>img {
    height: 75vh;
     width: 75vh;
+}
+#lifeMeter{
+    display: flex;
+}
+#lives{
+align-self: center;
+    padding-left: .5em;
+    font-size: x-large;
+    font-weight: bolder;
 }
