@@ -3,7 +3,19 @@
 }
 dt{
     text-align: center;
+    width: 15%;
+    margin: 0 auto;
+}
+dd{
+    text-align: center;
+    width: 95%;
+    margin: 0 auto;
+    font-weight: bolder;
 }
 .highlight{
     background-color: yellow;
+}
+.reverse-highlight{
+    background-color: black;
+    color: yellow;
 }
