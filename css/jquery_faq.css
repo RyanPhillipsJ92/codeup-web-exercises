@@ -1,0 +1,9 @@
+.invisible {
+    visibility: visible;
+}
+dt{
+    text-align: center;
+}
+.highlight{
+    background-color: yellow;
+}
