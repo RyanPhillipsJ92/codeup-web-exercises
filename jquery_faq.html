@@ -86,6 +86,19 @@
     <button id="highlightFacts" class="highlightFacts" type="submit">Highlight FACTS's</button>
 
 </div>
+<div id="frame-container">
+    <div id="frame frame1"></div>
+    <button id="swap" class="swap" type="submit">SWAP</button>
+</div>
+<div id="frame-container">
+    <div id="frame frame2"></div>
+    <button id="swap" class="swap" type="submit">SWAP</button>
+</div>
+<div id="frame-container">
+    <div id="frame frame3"></div>
+    <button id="swap" class="swap" type="submit">SWAP</button>
+</div>
+
 
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -119,18 +132,17 @@
     $('h3').click(function(e) {
         $(this).next().toggleClass('liBold')
 
-            .css('font-weight', 'bold');
         console.log('test')
     });
 
     $('#highlightFacts').on("click", function () {
         $('ul').each(function(i) {
-            $(this).children().last().css("background", "yellow");
+            $(this).children().last().toggleClass('highlight');
         })
     })
 
     $('li').on("click", function () {
-        $(this).parent().children().first().css('color', 'blue')
+        $(this).parent().children().first().toggleClass('blue-font')
     })
 
 </script>

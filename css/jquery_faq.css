@@ -19,4 +19,18 @@ dd{
     background-color: black;
     color: yellow;
 }
-.liBold
+.liBold{
+font-weight: bold;
+}
+.blue-font {
+color: blue
+}
+.frame-container{
+    height: 10em;
+    width: 10em;
+    color: black;
+}
+.frame{
+    height: 9em;
+    width: 9em;
+}
