@@ -82,6 +82,9 @@
             <li>Zion Canyon is continually changing.</li>
         </ul>
     </div>
+
+    <button id="highlightFacts" class="highlightFacts" type="submit">Highlight FACTS's</button>
+
 </div>
 
 
@@ -90,46 +93,46 @@
               crossorigin="anonymous"></script>
 <script>
     "use strict";
-    //First html functions***********************************
-    $('#showFaqs').click(function(e) {
-        $('dd').toggleClass('invisible highlight');
-        $('dd').css({
-            'text-align': 'center',
-            'border': 'solid 1px black'
-        });
-        $('dt').toggleClass('reverse-highlight');
+    //First html functions*********************************
+        // $('#showFaqs').click(function(e) {
+    //     $('dd').toggleClass('invisible highlight');
+    //     $('dd').css({
+    //         'text-align': 'center',
+    //         'border': 'solid 1px black'
+    //     });
+    //     $('dt').toggleClass('reverse-highlight');
+    //
+    // });
+    //
+    // $('dt').click(function(e) {
+    //     $(this).toggleClass('reverse-highlight');
+    //     $(this).next().toggleClass('invisible highlight');
+    //     $(this).next().css({
+    //         'text-align': 'center',
+    //         'border': 'solid 1px black',
+    //     });
+    // });
+    // END First html functions***********************************
 
+
+    //START SECOND EXERCISE******************************
+    $('h3').click(function(e) {
+        $(this).next().toggleClass('liBold')
+
+            .css('font-weight', 'bold');
+        console.log('test')
     });
 
-    $('dt').click(function(e) {
-        $(this).toggleClass('reverse-highlight');
-        $(this).next().toggleClass('invisible highlight');
-        $(this).next().css({
-            'text-align': 'center',
-            'border': 'solid 1px black',
-        });
-    });
-    //END First html functions***********************************
+    $('#highlightFacts').on("click", function () {
+        $('ul').each(function(i) {
+            $(this).children().last().css("background", "yellow");
+        })
+    })
 
+    $('li').on("click", function () {
+        $(this).parent().children().first().css('color', 'blue')
+    })
 
-    $('#showFaqs').click(function(e) {
-        $('dd').toggleClass('invisible highlight');
-        $('dd').css({
-            'text-align': 'center',
-            'border': 'solid 1px black'
-        });
-        $('dt').toggleClass('reverse-highlight');
-
-    });
-
-    $('dt').click(function(e) {
-        $(this).toggleClass('reverse-highlight');
-        $(this).next().toggleClass('invisible highlight');
-        $(this).next().css({
-            'text-align': 'center',
-            'border': 'solid 1px black',
-        });
-    });
 </script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
