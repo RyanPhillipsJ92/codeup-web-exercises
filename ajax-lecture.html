@@ -42,16 +42,26 @@
 
             // var jqXhr = $.ajax('https://swapi.dev/api/people/1')
 
-            $.ajax('https://swapi.dev/api/people/1').done(function(data){
-                console.log(data)
-            });
+            // $.ajax('https://swapi.dev/api/people/1').done(function(data){
+            //     console.log(data)
+            //     console.log(data.eye_color);//eye color
+            //     console.log(data['eye_color']);//eye color same output
+            //     console.log(data.vehicles[0]);//vehicle URL from API
+            // });
 
-            // example of waht .done() method kind of looks like
+            // example of what .done() method kind of looks like
             // function done(callbackFunction){
             //     // wait for the request
             //     var data = //fullfilled
             //     callbackFunction(data);
             // }
+            $.ajax('data/orders.json').done(function (data){
+                console.log(data[2].itemOrdered);
+            })
+
+
+
+
 
         // $('body')
         // $.ajax('./data/orders.json'); // jQuery request object
