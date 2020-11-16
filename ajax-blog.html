@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Online Store</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<div class="posts" id= "container"></div>
+
+
+<button id="update">any new blogs?</button>
+
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+<script>
+    $(document).ready(function() {
+        "use strict";
+        // TODO: Create an AJAX GET request for the file under data/inventory.json
+
+        var inventory = function (){
+            $.ajax({
+                url: "data/blog.json",
+                type: 'GET',
+                dataType: 'json', // added data type
+                success: function (data, status, jqXhr) {
+                    console.log(data);
+                    buildHTML(data);
+                },
+                fail: function (error, status, jqXhr) {
+                    console.log(jqXhr); // jQuery XMLHttpRequest object
+                    console.log(status);
+                    console.log(error);
+                }
+            })};
+        inventory();
+        function buildHTML(blogPosts) {
+            var postsHTML = "";
+
+                postsHTML += "<div id='row'>";
+                    blogPosts.forEach(function(post) {
+                        postsHTML += "<div id='col-sm'>";
+                        postsHTML += "<h2>"  + post.title + "</h2>";
+                        postsHTML += "<p>" + post.content + "</p>";
+                        postsHTML += "<h4>Date Posted: </h4>"+ post.date;
+                        postsHTML += "<h5 href=''>Genre: </h5>";
+                            post.categories.forEach(function (category){
+                                    postsHTML += category + "  ";
+                            });
+                        postsHTML += "</div>";
+                    });
+                postsHTML += "</div>";
+
+            $('.posts').html(postsHTML);
+        }
+        $('#update').click(inventory)
+    });
+
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossOrigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossOrigin="anonymous"></script>
+
+</body>
+</html>

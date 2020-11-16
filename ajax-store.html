@@ -18,7 +18,6 @@
         }
         th {
             align-content: space-between;
-            text-decoration: underline;
             font-weight: bolder;
         }
     </style>
@@ -38,15 +37,17 @@
     </thead>
     <tbody id="insertProducts"></tbody>
 </table>
+<button id="update">Update Current inventory </button>
 
 <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 
 <script>
-(function() {
+$(document).ready(function() {
     "use strict";
     // TODO: Create an AJAX GET request for the file under data/inventory.json
 
-        var inventory = $.ajax({
+        var inventory = function (){
+            $.ajax({
             url: "data/inventory.json",
             type: 'GET',
             dataType: 'json', // added data type
@@ -59,8 +60,8 @@
                 console.log(status);
                 console.log(error);
             }
-        });
-
+        })};
+        inventory();
             function buildHTML(tools) {
                 var toolsHTML = "";
 
@@ -68,24 +69,27 @@
                     toolsHTML += "<tr>";
                     toolsHTML += "<th>"  + tool.title + "</th>";
                     toolsHTML += "<th>" + tool.quantity + "</th>";
-                    toolsHTML += "<th>" + tool.price + "</th>";
-
+                    toolsHTML += "<th>$" + tool.price + "</th>";
+                    toolsHTML += "<th> <label href=''>";
                     tool.categories.forEach(function (category){
-                        toolsHTML += "<th>" + category + "</th>";
+                        if(category.length)
+                            toolsHTML += category + "  ";
                     });
-
+                    toolsHTML += "</label></th>";
                     toolsHTML += "</tr>";
                 });
 
                 $('#insertProducts').html(toolsHTML);
             }
+    $('#update').click(inventory)
+});
 
     // TODO: Take the data from inventory.json and append it to the products table
     //       HINT: Your data should come back as a JSON object; use console.log() to inspect
     //             its contents and fields
     // console.log($.ajax("data/inventory.json"))
     //       HINT: You will want to target #insertProducts for your new HTML elements
-})();
+
 </script>
 
 </body>
