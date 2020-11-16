@@ -159,11 +159,11 @@
 
         // GET short-hand method
 
-        // $.get("https://swapi.dev/api/films", {
-        //     "search": "A New Hope"
-        // }).done(function(data) {
-        //     console.log("The director of Star Wars: A New Hope is..." + data.results[0].director);
-        // });
+        $.get("https://swapi.dev/api/films", {
+            "search": "A New Hope"
+        }).done(function(data) {
+            console.log("The director of Star Wars: A New Hope is..." + data.results[0].director);
+        });
 
     });
 
