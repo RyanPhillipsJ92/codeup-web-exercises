@@ -55,10 +55,32 @@
             //     var data = //fullfilled
             //     callbackFunction(data);
             // }
-            $.ajax('data/orders.json').done(function (data){
-                console.log(data[2].itemOrdered);
-            })
+            // $.ajax('data/orders.json').done(function (data){
+            //     console.log(data[0].orderNumber);
+            //     console.log(data[0].itemOrdered);
+            //     console.log(data[0].orderedBy);
+            //     console.log(data[1].orderNumber);
+            //     console.log(data[1].itemOrdered);
+            //     console.log(data[1].orderedBy);
+            //     console.log(data[2].orderNumber);
+            //     console.log(data[2].itemOrdered);
+            //     console.log(data[2].orderedBy);
+            // })
 
+        var maximum;
+        $.ajax('https://swapi.dev/api/people/').done(function (data){
+            console.log(data.count.length)
+            maximum = data.count.length;
+        });
+
+        function getRandomArbitrary() {
+            console.log(Math.random() * (maximum))
+            return Math.random() * (maximum);
+
+        };
+        $.ajax('https://swapi.dev/api/people/'+getRandomArbitrary()).done(function(data) {
+            console.log(data)
+        });
 
 
 
