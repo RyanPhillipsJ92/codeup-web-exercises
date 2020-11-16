@@ -1,7 +1,27 @@
-giut <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <title>Online Store</title>
+    <style>
+        table {
+            width: 75%;
+            background-color: darkblue;
+            border: 2px solid black;
+            margin: 0 auto;
+            margin-bottom: 5px;
+            padding: 10px;
+            justify-content: center;
+        }
+        tr {
+            width: 100%;
+            color: white;
+        }
+        th {
+            align-content: space-between;
+            text-decoration: underline;
+            font-weight: bolder;
+        }
+    </style>
 </head>
 <body>
 
@@ -26,9 +46,44 @@ giut <!DOCTYPE html>
     "use strict";
     // TODO: Create an AJAX GET request for the file under data/inventory.json
 
+        var inventory = $.ajax({
+            url: "data/inventory.json",
+            type: 'GET',
+            dataType: 'json', // added data type
+            success: function (data, status, jqXhr) {
+                console.log(data);
+                buildHTML(data);
+            },
+            fail: function (error, status, jqXhr) {
+                console.log(jqXhr); // jQuery XMLHttpRequest object
+                console.log(status);
+                console.log(error);
+            }
+        });
+
+            function buildHTML(tools) {
+                var toolsHTML = "";
+
+                tools.forEach(function(tool) {
+                    toolsHTML += "<tr>";
+                    toolsHTML += "<th>"  + tool.title + "</th>";
+                    toolsHTML += "<th>" + tool.quantity + "</th>";
+                    toolsHTML += "<th>" + tool.price + "</th>";
+
+                    tool.categories.forEach(function (category){
+                        toolsHTML += "<th>" + category + "</th>";
+                    });
+
+                    toolsHTML += "</tr>";
+                });
+
+                $('#insertProducts').html(toolsHTML);
+            }
+
     // TODO: Take the data from inventory.json and append it to the products table
     //       HINT: Your data should come back as a JSON object; use console.log() to inspect
     //             its contents and fields
+    // console.log($.ajax("data/inventory.json"))
     //       HINT: You will want to target #insertProducts for your new HTML elements
 })();
 </script>
