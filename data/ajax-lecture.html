@@ -36,6 +36,24 @@
 
         // simple request
 
+            //Make an AJAX request to the Star Wars API
+            // console.log($.ajax('https://swapi.dev/api/people/1'));
+
+
+            // var jqXhr = $.ajax('https://swapi.dev/api/people/1')
+
+            $.ajax('https://swapi.dev/api/people/1').done(function(data){
+                console.log(data)
+            });
+
+            // example of waht .done() method kind of looks like
+            // function done(callbackFunction){
+            //     // wait for the request
+            //     var data = //fullfilled
+            //     callbackFunction(data);
+            // }
+
+        // $('body')
         // $.ajax('./data/orders.json'); // jQuery request object
         //
         // $.ajax("./data/orders.json").done(function(responseData){
