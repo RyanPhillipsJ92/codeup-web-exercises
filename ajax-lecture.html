@@ -67,20 +67,23 @@
             //     console.log(data[2].orderedBy);
             // })
 
-        var maximum;
-        $.ajax('https://swapi.dev/api/people/').done(function (data){
-            console.log(data.count.length)
-            maximum = data.count.length;
-        });
-
-        function getRandomArbitrary() {
-            console.log(Math.random() * (maximum))
-            return Math.random() * (maximum);
-
-        };
-        $.ajax('https://swapi.dev/api/people/'+getRandomArbitrary()).done(function(data) {
-            console.log(data)
-        });
+        // var maximum;
+        // $.ajax('https://swapi.dev/api/people/').done(function (data){
+        //     console.log(data.count.length)
+        //     maximum = data.count.length;
+        // });
+        // setTimeout(function (){
+        //     console.log(maximum)
+        // }, 10);
+        //
+        // function getRandomArbitrary() {
+        //     console.log(Math.random() * (maximum))
+        //     return Math.random() * (maximum);
+        //
+        // };
+        // $.ajax('https://swapi.dev/api/people/'+getRandomArbitrary()).done(function(data) {
+        //     console.log(data)
+        // });
 
 
 
@@ -98,7 +101,7 @@
         //         responseData = data;
         //     }); // .done()
         //
-        //     console.log(responseData);
+        // console.log(responseData)
 
         // simple API request
 
@@ -109,21 +112,21 @@
 
         // single argument with .done(), .fail() and .always() methods
 
-        // $.ajax({
-        //     "url": "https://swapi.dev/api/films",
-        //     "type": "GET",
-        //     "data": {
-        //         "search": "A New Hope"
-        //     }
-        // }).done(function(data, status, jqXhr) {
-        //     // console.log(status);
-        //     console.log(data);
-        //     console.log("The director of Star Wars: A New Hope is..." + data.results[0].director);
-        // }).fail(function(jqXhr, status, error) {
-        //     console.log("Request failed! " + status);
-        // }).always(function() {
-        //     console.log("Request made.");
-        // });
+        $.ajax({
+            "url": "https://swapi.dev/api/films",
+            "type": "GET",
+            "data": {
+                "search": "A New Hope"
+            }
+        }).done(function(data, status, jqXhr) {
+            // console.log(status);
+            console.log(data);
+            console.log("The director of Star Wars: A New Hope is..." + data.results[0].director);
+        }).fail(function(jqXhr, status, error) {
+            console.log("Request failed! " + status);
+        }).always(function() {
+            console.log("Request made.");
+        });
 
 
         // Url first argument and configuration object second argument
