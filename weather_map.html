@@ -20,10 +20,15 @@
 <body>
 
 <h1>Weather Map Project</h1>
+<button id="find_btn">Find Me</button>
+<div id="result"></div>
+
+
+
 <div id="userCity">
-    <form>
+    <label>
         <input id="userInput" placeholder="Enter city">
-    </form>
+    </label>
 </div>
 <!--******MAP DIV*******-->
 <div id='map' style='width: 400px; height: 300px;'></div>
@@ -59,10 +64,31 @@
 
         "use strict";
 
+        var userLatitude;
+        var userLongitude;
+
+        function getLocation () {
+            if ("geolocation" in navigator){ //check geolocation available
+                //try to get user current location using getCurrentPosition() method
+                navigator.geolocation.getCurrentPosition(function(position){
+                    $("#result").html("Found your location <br />Lat : "+position.coords.latitude+" </br>Lang :"+ position.coords.longitude);
+                console.log(position.coords.latitude);
+                console.log($('#result').val())
+                userLatitude = position.coords.latitude;
+                userLongitude = position.coords.longitude
+                });
+            }else{
+                console.log("Browser doesn't support geolocation!");
+            }
+        }
+        // getLocation();
+
         $.get("https://api.openweathermap.org/data/2.5/onecall", {
             APPID: OPEN_WEATHER_APPID,
             lat: 30.824909,
             lon: -97.604454,
+            // lat: userLatitude,
+            // lon: userLongitude,
             units: "imperial",
             exclude: "minutely,hourly,alerts"
         }).done(function (data) {
@@ -97,22 +123,26 @@
         }
         var userEntry =[];
 
-        $('#userCity').change(function(event){
+        $('#userInput').change(function(event){
             var i =0;
-            userEntry.push(event.keyCode)
-            console.log(i);
-            console.log(userEntry)
             console.log($('#userInput').val());
-            userEntry.forEach(function (){
-                if (userEntry[i] == '13'){
-                    userEntry = geocode($('#userInput').val(), mapboxToken).then(function(results) {
-                        map.setCenter(results);
-                    console.log("User sent data")
-                        userEntry = [];
-                    })
-                }
-                i++;
-            })
+            userEntry = geocode($('#userInput').val(), mapboxToken).then(function(results) {
+                map.setCenter(results);
+                console.log("User sent data")
+                });
+        });
+
+
+
+        $("#find_btn").click(function () { //user clicks button
+            if ("geolocation" in navigator){ //check geolocation available
+                //try to get user current location using getCurrentPosition() method
+                navigator.geolocation.getCurrentPosition(function(position){
+                    $("#result").html("Found your location <br />Lat : "+position.coords.latitude+" </br>Lang :"+ position.coords.longitude);
+                });
+            }else{
+                console.log("Browser doesn't support geolocation!");
+            }
         });
 
     });
