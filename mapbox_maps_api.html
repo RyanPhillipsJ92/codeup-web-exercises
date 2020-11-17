@@ -13,64 +13,65 @@
 
 </head>
 <body>
-    <div id='map' style='width: 100%; height: 600px;'></div>
-        <script>
+    <div id='map' style='width: 100%; height: 600px;'>
+    </div>
 
-            // Trying to refactor to make it more dynamic
-            var restaurants = [
-                {
-                    address:"904 W University Ave Bldg. A, Unit 105, Georgetown, TX 78626",
-                    name:"<h1>Jersey Mike's</h1>",
-                }, {
-                    address:"1031 W University Ave, Georgetown, TX 78628",
-                    name:"<h1>Chick-fil-A</h1>",
-                }, {
-                    address: "1401 S IH 35 Frontage Rd, Georgetown, TX 78626",
-                    name: "<h1>Olive Garden</h1>",
-                }
-            ]
-                var jerseyMikesAddress = "904 W University Ave Bldg. A, Unit 105, Georgetown, TX 78626";
-                mapboxgl.accessToken = mapboxToken;
+    <script>
 
-               // **** MAP*******
-               var map = new mapboxgl.Map({
-                    container: 'map',
-                    style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location
-                    center: [-98.4916, 29.4252], // starting position [lng, lat]
-                    zoom: 13 // starting zoom
-                });
-            //   ******End Map
-            geocode("Georgetown", mapboxToken).then(function(results) {
-              map.setCenter(results);
-            })
-            //******* Geocode function **************//
-            function geocode(search, token) {
-                var baseUrl = 'https://api.mapbox.com';
-                var endPoint = '/geocoding/v5/mapbox.places/';
-                return fetch(baseUrl + endPoint + encodeURIComponent(search) + '.json' + "?" + 'access_token=' + token)
-                    .then(function(res) {
-                        return res.json();
-                        // to get all the data from the request, comment out the following three lines...
-                    }).then(function(data) {
-                        return data.features[0].center;
-                    });
+        // Trying to refactor to make it more dynamic
+        var restaurants = [
+            {
+                address:"904 W University Ave Bldg. A, Unit 105, Georgetown, TX 78626",
+                name:"<h1>Jersey Mike's</h1>",
+            }, {
+                address:"1031 W University Ave, Georgetown, TX 78628",
+                name:"<h1>Chick-fil-A</h1>",
+            }, {
+                address: "1401 S IH 35 Frontage Rd, Georgetown, TX 78626",
+                name: "<h1>Olive Garden</h1>",
             }
+        ]
+            var jerseyMikesAddress = "904 W University Ave Bldg. A, Unit 105, Georgetown, TX 78626";
+            mapboxgl.accessToken = mapboxToken;
 
-             restaurants.forEach(function ())
-            geocode(jerseyMikesAddress, mapboxToken).then(function(results) {
-                console.log(results)
-                //****POPUP*********
-                var jerseyMikespopup = new mapboxgl.Popup()
-                jerseyMikespopup.setHTML("<h1>Jersey Mike's</h1>")
-                //****END POPUP*********
-                var jerseyMikesMarker = new mapboxgl.Marker()
-                jerseyMikesMarker.setLngLat(results)
-                jerseyMikesMarker.setPopup(jerseyMikespopup)
-                jerseyMikesMarker.addTo(map);
+           // **** MAP*******
+           var map = new mapboxgl.Map({
+                container: 'map',
+                style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location
+                center: [-98.4916, 29.4252], // starting position [lng, lat]
+                zoom: 13 // starting zoom
+            });
+        //   ******End Map
+        geocode("Georgetown", mapboxToken).then(function(results) {
+          map.setCenter(results);
+        })
+        //******* Geocode function **************//
+        function geocode(search, token) {
+            var baseUrl = 'https://api.mapbox.com';
+            var endPoint = '/geocoding/v5/mapbox.places/';
+            return fetch(baseUrl + endPoint + encodeURIComponent(search) + '.json' + "?" + 'access_token=' + token)
+                .then(function(res) {
+                    return res.json();
+                    // to get all the data from the request, comment out the following three lines...
+                }).then(function(data) {
+                    return data.features[0].center;
                 });
+        }
 
-
-        </script>
+         restaurants.forEach(function () {
+             geocode(jerseyMikesAddress, mapboxToken).then(function (results) {
+                 console.log(results)
+                 //****POPUP*********
+                 var jerseyMikespopup = new mapboxgl.Popup()
+                 jerseyMikespopup.setHTML("<h1>Jersey Mike's</h1>")
+                 //****END POPUP*********
+                 var jerseyMikesMarker = new mapboxgl.Marker()
+                 jerseyMikesMarker.setLngLat(results)
+                 jerseyMikesMarker.setPopup(jerseyMikespopup)
+                 jerseyMikesMarker.addTo(map);
+             });
+         });
+    </script>
 
 </body>
 </html>

@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+    <!--****MAP BOX*****-->
+    <script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
+    <!--****MAP BOX*****-->
+    <!-- Custom CSS -->
+    <title>My weather map</title>
+</head>
+<body>
+
+<h1>Weather Map Project</h1>
+
+<!--******MAP DIV*******-->
+<div id='map' style='width: 400px; height: 300px;'></div>
+
+
+<h5>Tips</h5>
+<ul>
+    <li>Take time to plan out your approach for each part of the project</li>
+    <li>Commit along the way. Especially as you are starting new functionality</li>
+    <li>You may utilize the geocoder helper methods from the previous mapbox lesson</li>
+    <li>API Keys should be protected in your keys.js</li>
+    <li>Read the docs!</li>
+    <li>Get your project working, then focus on styling & refactoring</li>
+    <li>To add mapbox autocomplete search, you will need to include geocoder scripts from mapbox</li>
+</ul>
+
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+
+<script src="js/keys.js"></script>
+
+<script>
+    $(document).ready(function () {
+
+        "use strict";
+
+        var HomeAddress = "yearwood ln, Jarrell, TX 76537";
+        // GET REQUEST to OpenWeatherMap using city parameter
+        // https://openweathermap.org/current
+        // q <-- parameters from weather map docs
+        // APPID <-- weather api key in keys.js file
+
+        $.get("https://api.openweathermap.org/data/2.5/onecall", {
+            APPID: OPEN_WEATHER_APPID,
+            lat: 30.824909,
+            lon: -97.604454,
+            units: "imperial",
+            exclude: "minutely,hourly,alerts"
+        }).done(function (data) {
+            console.log(data);
+        });
+
+        // **** MAP*******
+        mapboxgl.accessToken =mapboxToken;
+        var map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location
+            center: [-97.604454, 30.824909], // starting position [lng, lat]
+            zoom: 11// starting zoom
+        });
+        //   ******End Map *****
+        geocode("jarrell", mapboxToken).then(function(results) {
+            map.setCenter(results);
+        })
+        //*** GEO CODE FUNCTION ***//
+        function geocode(search, token) {
+            var baseUrl = 'https://api.mapbox.com';
+            var endPoint = '/geocoding/v5/mapbox.places/';
+            return fetch(baseUrl + endPoint + encodeURIComponent(search) + '.json' + "?" + 'access_token=' + token)
+                .then(function(res) {
+                    return res.json();
+                    // to get all the data from the request, comment out the following three lines...
+                }).then(function(data) {
+                    return data.features[0].center;
+                });
+        }
+    });
+
+
+
+</script>
+</body>
+</html>
