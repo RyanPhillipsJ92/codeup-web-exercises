@@ -20,19 +20,23 @@
 <body>
 
 <h1>Weather Map Project</h1>
-
+<div id="userCity">
+    <form>
+        <input id="userInput" placeholder="Enter city">
+    </form>
+</div>
 <!--******MAP DIV*******-->
 <div id='map' style='width: 400px; height: 300px;'></div>
 
 
 <h5>Tips</h5>
 <ul>
-    <li>Take time to plan out your approach for each part of the project</li>
-    <li>Commit along the way. Especially as you are starting new functionality</li>
-    <li>You may utilize the geocoder helper methods from the previous mapbox lesson</li>
-    <li>API Keys should be protected in your keys.js</li>
-    <li>Read the docs!</li>
-    <li>Get your project working, then focus on styling & refactoring</li>
+    <li>Day</li>
+    <li>Temperature</li>
+    <li>Description:</li>
+    <li>Humidity:</li>
+    <li>Winds:</li>
+    <li>Pressure:</li>
     <li>To add mapbox autocomplete search, you will need to include geocoder scripts from mapbox</li>
 </ul>
 
@@ -55,12 +59,6 @@
 
         "use strict";
 
-        var HomeAddress = "yearwood ln, Jarrell, TX 76537";
-        // GET REQUEST to OpenWeatherMap using city parameter
-        // https://openweathermap.org/current
-        // q <-- parameters from weather map docs
-        // APPID <-- weather api key in keys.js file
-
         $.get("https://api.openweathermap.org/data/2.5/onecall", {
             APPID: OPEN_WEATHER_APPID,
             lat: 30.824909,
@@ -71,6 +69,7 @@
             console.log(data);
         });
 
+
         // **** MAP*******
         mapboxgl.accessToken =mapboxToken;
         var map = new mapboxgl.Map({
@@ -80,9 +79,11 @@
             zoom: 11// starting zoom
         });
         //   ******End Map *****
-        geocode("jarrell", mapboxToken).then(function(results) {
-            map.setCenter(results);
-        })
+
+
+        // geocode("jarrell", mapboxToken).then(function(results) {
+        //     map.setCenter(results);
+        // })
         //*** GEO CODE FUNCTION ***//
         function geocode(search, token) {
             var baseUrl = 'https://api.mapbox.com';
@@ -90,11 +91,30 @@
             return fetch(baseUrl + endPoint + encodeURIComponent(search) + '.json' + "?" + 'access_token=' + token)
                 .then(function(res) {
                     return res.json();
-                    // to get all the data from the request, comment out the following three lines...
                 }).then(function(data) {
                     return data.features[0].center;
                 });
         }
+        var userEntry =[];
+
+        $('#userCity').change(function(event){
+            var i =0;
+            userEntry.push(event.keyCode)
+            console.log(i);
+            console.log(userEntry)
+            console.log($('#userInput').val());
+            userEntry.forEach(function (){
+                if (userEntry[i] == '13'){
+                    userEntry = geocode($('#userInput').val(), mapboxToken).then(function(results) {
+                        map.setCenter(results);
+                    console.log("User sent data")
+                        userEntry = [];
+                    })
+                }
+                i++;
+            })
+        });
+
     });
 
 
