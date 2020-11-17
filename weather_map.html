@@ -20,10 +20,6 @@
 <body>
 
 <h1>Weather Map Project</h1>
-<button id="find_btn">Find Me</button>
-<div id="result"></div>
-
-
 
 <div id="userCity">
     <label>
@@ -63,37 +59,40 @@
     $(document).ready(function () {
 
         "use strict";
-
+        //****Global variables for users geolocation
         var userLatitude;
         var userLongitude;
-
+//*****Function to get and store users location and open map via coordinates as well as place marker at location
         function getLocation () {
             if ("geolocation" in navigator){ //check geolocation available
                 //try to get user current location using getCurrentPosition() method
                 navigator.geolocation.getCurrentPosition(function(position){
-                    $("#result").html("Found your location <br />Lat : "+position.coords.latitude+" </br>Lang :"+ position.coords.longitude);
-                console.log(position.coords.latitude);
-                console.log($('#result').val())
                 userLatitude = position.coords.latitude;
                 userLongitude = position.coords.longitude
+                    getWeather(userLongitude, userLatitude);
+                    map.setCenter([userLongitude, userLatitude]);
+                    var userMarker = new mapboxgl.Marker()
+                        .setLngLat([userLongitude, userLatitude])
+                        .addTo(map);
                 });
             }else{
-                console.log("Browser doesn't support geolocation!");
+                alert("Browser doesn't support geolocation!");
+                getWeather(77.0365 ,38.8977 );
+                map.setCenter([77.0365, 38.8977]);
             }
         }
-        // getLocation();
-
-        $.get("https://api.openweathermap.org/data/2.5/onecall", {
-            APPID: OPEN_WEATHER_APPID,
-            lat: 30.824909,
-            lon: -97.604454,
-            // lat: userLatitude,
-            // lon: userLongitude,
-            units: "imperial",
-            exclude: "minutely,hourly,alerts"
-        }).done(function (data) {
-            console.log(data);
-        });
+        getLocation();
+        function getWeather(long, lat){
+            $.get("https://api.openweathermap.org/data/2.5/onecall", {
+                APPID: OPEN_WEATHER_APPID,
+                lat: lat,
+                lon: long,
+                units: "imperial",
+                exclude: "minutely,hourly,alerts"
+            }).done(function (data) {
+                console.log(data);
+            });
+        }
 
 
         // **** MAP*******
@@ -101,15 +100,11 @@
         var map = new mapboxgl.Map({
             container: 'map',
             style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location
-            center: [-97.604454, 30.824909], // starting position [lng, lat]
-            zoom: 11// starting zoom
+            zoom: 9// starting zoom
         });
         //   ******End Map *****
 
 
-        // geocode("jarrell", mapboxToken).then(function(results) {
-        //     map.setCenter(results);
-        // })
         //*** GEO CODE FUNCTION ***//
         function geocode(search, token) {
             var baseUrl = 'https://api.mapbox.com';
@@ -121,6 +116,7 @@
                     return data.features[0].center;
                 });
         }
+
         var userEntry =[];
 
         $('#userInput').change(function(event){
