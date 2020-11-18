@@ -27,8 +27,21 @@
     </label>
 </div>
 <!--******MAP DIV*******-->
-<div id='map' style='width: 400px; height: 300px;'></div>
-
+<div id='map' style='width: 800px; height:  400px;'></div>
+<div id="5dayContainer">
+<!--    *****     CARD TEMPLATE**** -->
+    <div class="card" style="width: 18rem;">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+            <h6 class="card-title">Day: </h6>
+            <h6 class="card-title">Temperature: </h6>
+            <h6 class="card-title">Description: </h6>
+            <h6 class="card-title">Humidity: </h6>
+            <h6 class="card-title">Winds:</h6>
+            <h6 class="card-title">Pressure:</h6>
+        </div>
+    </div>
+</div>
 
 <h5>Tips</h5>
 <ul>
@@ -62,6 +75,9 @@
         //****Global variables for users geolocation
         var userLatitude;
         var userLongitude;
+        var userMarker = new mapboxgl.Marker({
+            draggable:true
+        });
 //*****Function to get and store users location and open map via coordinates as well as place marker at location
         function getLocation () {
             if ("geolocation" in navigator){ //check geolocation available
@@ -70,11 +86,10 @@
                 userLatitude = position.coords.latitude;
                 userLongitude = position.coords.longitude
                     getWeather(userLongitude, userLatitude);
-                    map.setCenter([userLongitude, userLatitude]);
-                    var userMarker = new mapboxgl.Marker()
-                        .setLngLat([userLongitude, userLatitude])
-                        .addTo(map);
-                });
+                    map.setCenter([userLongitude, userLatitude])
+                    userMarker.setLngLat([userLongitude, userLatitude])
+                    userMarker.addTo(map);
+                })
             }else{
                 alert("Browser doesn't support geolocation!");
                 getWeather(77.0365 ,38.8977 );
@@ -93,6 +108,19 @@
                 console.log(data);
             });
         }
+
+        //**** Draggable marker Getting long and lat
+        function onDragEnd() {
+            var lngLat = userMarker.getLngLat();
+            userLatitude = lngLat.lat;
+            userLongitude = lngLat.lng
+            console.log(userLatitude)
+            console.log(userLongitude)
+            getWeather(userLongitude, userLatitude);
+            map.setCenter([userLongitude, userLatitude]);
+                userMarker.setLngLat([userLongitude, userLatitude])
+        }
+        userMarker.on('dragend', onDragEnd);
 
 
         // **** MAP*******
@@ -120,25 +148,12 @@
         var userEntry =[];
 
         $('#userInput').change(function(event){
-            var i =0;
+
             console.log($('#userInput').val());
             userEntry = geocode($('#userInput').val(), mapboxToken).then(function(results) {
                 map.setCenter(results);
                 console.log("User sent data")
                 });
-        });
-
-
-
-        $("#find_btn").click(function () { //user clicks button
-            if ("geolocation" in navigator){ //check geolocation available
-                //try to get user current location using getCurrentPosition() method
-                navigator.geolocation.getCurrentPosition(function(position){
-                    $("#result").html("Found your location <br />Lat : "+position.coords.latitude+" </br>Lang :"+ position.coords.longitude);
-                });
-            }else{
-                console.log("Browser doesn't support geolocation!");
-            }
         });
 
     });
