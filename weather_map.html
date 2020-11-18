@@ -130,6 +130,7 @@
             style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location
             zoom: 9// starting zoom
         });
+        map.doubleClickZoom.disable();
         //   ******End Map *****
 
 
@@ -144,18 +145,40 @@
                     return data.features[0].center;
                 });
         }
-
-        var userEntry =[];
-
+        // ****** INPUT BOX PASSING GEOLOCATION VIA SEARCH ********
         $('#userInput').change(function(event){
-
             console.log($('#userInput').val());
-            userEntry = geocode($('#userInput').val(), mapboxToken).then(function(results) {
+            var userEntry = geocode($('#userInput').val(), mapboxToken).then(function(results) {
                 map.setCenter(results);
-                console.log("User sent data")
+                userMarker.setLngLat(map.getCenter());
                 });
         });
 
+            map.on('dblclick', function(e){
+                userLatitude = [e.lngLat.lat];
+                userLongitude = [e.lngLat.lng];
+                    console.log('howdy')
+                    map.setCenter([userLongitude, userLatitude]);
+                    userMarker.setLngLat([userLongitude, userLatitude])
+                getWeather(userLongitude, userLatitude);
+            });
+
+        // function dblClick(results) {
+        //     console.log('howdy')
+        //     map.setCenter([userLongitude, userLatitude]);
+        //
+        //         console.log(userLatitude)
+        //         console.log(userLongitude)
+        //         getWeather(userLongitude, userLatitude);
+        //         // map.setCenter([userLongitude, userLatitude]);
+        //     };
+        //
+        // map.on('dblclick', function(e){
+        //     dblClick();
+        //
+        //
+        // });
+        // dblClick();
     });
 
 
