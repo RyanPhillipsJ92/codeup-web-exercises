@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-
     <!--****MAP BOX*****-->
     <script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
@@ -17,8 +16,8 @@
     <!-- Custom CSS -->
     <title>My weather map</title>
 </head>
-<body>
 
+<body>
 <h1>Weather Map Project</h1>
 
 <div id="userCity">
@@ -26,6 +25,7 @@
         <input id="userInput" placeholder="Enter city">
     </label>
 </div>
+
 <!--******MAP DIV*******-->
 <div id='map' style='width: 800px; height:  400px;'></div>
 <div id="5dayContainer">
@@ -43,17 +43,6 @@
     </div>
 </div>
 
-<h5>Tips</h5>
-<ul>
-    <li>Day</li>
-    <li>Temperature</li>
-    <li>Description:</li>
-    <li>Humidity:</li>
-    <li>Winds:</li>
-    <li>Pressure:</li>
-    <li>To add mapbox autocomplete search, you will need to include geocoder scripts from mapbox</li>
-</ul>
-
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
@@ -64,7 +53,6 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
-
 
 <script src="js/keys.js"></script>
 
@@ -78,6 +66,7 @@
         var userMarker = new mapboxgl.Marker({
             draggable:true
         });
+
 //*****Function to get and store users location and open map via coordinates as well as place marker at location
         function getLocation () {
             if ("geolocation" in navigator){ //check geolocation available
@@ -97,6 +86,7 @@
             }
         }
         getLocation();
+        //**** GETS LOCAL WEATHER ******
         function getWeather(long, lat){
             $.get("https://api.openweathermap.org/data/2.5/onecall", {
                 APPID: OPEN_WEATHER_APPID,
@@ -132,7 +122,6 @@
         });
         map.doubleClickZoom.disable();
         //   ******End Map *****
-
 
         //*** GEO CODE FUNCTION ***//
         function geocode(search, token) {
