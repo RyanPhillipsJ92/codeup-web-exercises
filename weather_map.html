@@ -63,31 +63,35 @@
         //****Global variables for users geolocation
         var userLatitude;
         var userLongitude;
+        var originalUserLatitude;
+        var originalUserLongitude;
         var userMarker = new mapboxgl.Marker({
-            draggable:true
+            draggable: true
         });
 
 //*****Function to get and store users location and open map via coordinates as well as place marker at location
-        function getLocation () {
-            if ("geolocation" in navigator){ //check geolocation available
+        function getLocation() {
+            if ("geolocation" in navigator) { //check geolocation available
                 //try to get user current location using getCurrentPosition() method
-                navigator.geolocation.getCurrentPosition(function(position){
-                userLatitude = position.coords.latitude;
-                userLongitude = position.coords.longitude
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    userLatitude = position.coords.latitude;
+                    userLongitude = position.coords.longitude
                     getWeather(userLongitude, userLatitude);
                     map.setCenter([userLongitude, userLatitude])
                     userMarker.setLngLat([userLongitude, userLatitude])
                     userMarker.addTo(map);
                 })
-            }else{
+            } else {
                 alert("Browser doesn't support geolocation!");
-                getWeather(77.0365 ,38.8977 );
+                getWeather(77.0365, 38.8977);
                 map.setCenter([77.0365, 38.8977]);
             }
         }
+
         getLocation();
+
         //**** GETS LOCAL WEATHER ******
-        function getWeather(long, lat){
+        function getWeather(long, lat) {
             $.get("https://api.openweathermap.org/data/2.5/onecall", {
                 APPID: OPEN_WEATHER_APPID,
                 lat: lat,
@@ -108,13 +112,14 @@
             console.log(userLongitude)
             getWeather(userLongitude, userLatitude);
             map.setCenter([userLongitude, userLatitude]);
-                userMarker.setLngLat([userLongitude, userLatitude])
+            userMarker.setLngLat([userLongitude, userLatitude])
         }
+
         userMarker.on('dragend', onDragEnd);
 
 
         // **** MAP*******
-        mapboxgl.accessToken =mapboxToken;
+        mapboxgl.accessToken = mapboxToken;
         var map = new mapboxgl.Map({
             container: 'map',
             style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location
@@ -128,29 +133,63 @@
             var baseUrl = 'https://api.mapbox.com';
             var endPoint = '/geocoding/v5/mapbox.places/';
             return fetch(baseUrl + endPoint + encodeURIComponent(search) + '.json' + "?" + 'access_token=' + token)
-            .then(function(res) {
-                return res.json();
-            }).then(function(data) {
-                return data.features[0].center;
-            });
-        }
-        // ****** INPUT BOX PASSING GEOLOCATION VIA SEARCH ********
-        $('#userInput').change(function(event){
-            console.log($('#userInput').val());
-            var userEntry = geocode($('#userInput').val(), mapboxToken).then(function(results) {
-                map.setCenter(results);
-                userMarker.setLngLat(map.getCenter());
+                .then(function (res) {
+                    return res.json();
+                }).then(function (data) {
+                    return data.features[0].center;
                 });
+        }
+
+        // ****** INPUT BOX PASSING GEOLOCATION VIA SEARCH ********
+        $('#userInput').change(function (event) {
+            console.log($('#userInput').val());
+           var longLat;
+            var userEntry = geocode($('#userInput').val(), mapboxToken).then(function (results) {
+                longLat = results;
+                console.log(longLat);
+                console.log(results);
+                userMarker.setLngLat(longLat);
+                map.flyTo({
+// These options control the ending camera position: centered at the target, at zoom level 9, and north up.
+                    center: [userMarker],
+                    zoom: 9,
+                    bearing: 0,
+// These options control the flight curve, making it move slowly and zoom out almost completely before starting to pan.
+                    speed: 0.6, // make the flying slow
+                    curve: 1, // change the speed at which it zooms out
+// this animation is considered essential with respect to prefers-reduced-motion
+                    essential: true
+                });
+                // setCenter(results);
+                // userMarker.setLngLat(map.getCenter());
+            });
         });
 
-            map.on('dblclick', function(e){
+        map.on('dblclick', function (e) {
+            setTimeout(function () {
                 userLatitude = [e.lngLat.lat];
                 userLongitude = [e.lngLat.lng];
-                console.log('howdy')
-                map.setCenter([userLongitude, userLatitude]);
-                userMarker.setLngLat([userLongitude, userLatitude])
+                console.log(userLatitude);
+                console.log(userLongitude);
+                // map.setCenter([userLongitude, userLatitude]);
+                userMarker.setLngLat([userLongitude, userLatitude]);
                 getWeather(userLongitude, userLatitude);
+
+// and now we're at the opposite point
+            map.flyTo({
+// These options control the ending camera position: centered at the target, at zoom level 9, and north up.
+                center: [userLongitude, userLatitude],
+                zoom: 9,
+                bearing: 0,
+// These options control the flight curve, making it move slowly and zoom out almost completely before starting to pan.
+                speed: 0.75, // make the flying slow
+                curve: 1, // change the speed at which it zooms out
+// this animation is considered essential with respect to prefers-reduced-motion
+                essential: true
+            }, 0);
             });
+
+        });
 
     });
 
