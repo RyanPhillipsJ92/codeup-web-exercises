@@ -128,11 +128,11 @@
             var baseUrl = 'https://api.mapbox.com';
             var endPoint = '/geocoding/v5/mapbox.places/';
             return fetch(baseUrl + endPoint + encodeURIComponent(search) + '.json' + "?" + 'access_token=' + token)
-                .then(function(res) {
-                    return res.json();
-                }).then(function(data) {
-                    return data.features[0].center;
-                });
+            .then(function(res) {
+                return res.json();
+            }).then(function(data) {
+                return data.features[0].center;
+            });
         }
         // ****** INPUT BOX PASSING GEOLOCATION VIA SEARCH ********
         $('#userInput').change(function(event){
@@ -146,15 +146,13 @@
             map.on('dblclick', function(e){
                 userLatitude = [e.lngLat.lat];
                 userLongitude = [e.lngLat.lng];
-                    console.log('howdy')
-                    map.setCenter([userLongitude, userLatitude]);
-                    userMarker.setLngLat([userLongitude, userLatitude])
+                console.log('howdy')
+                map.setCenter([userLongitude, userLatitude]);
+                userMarker.setLngLat([userLongitude, userLatitude])
                 getWeather(userLongitude, userLatitude);
             });
 
     });
-
-
 
 </script>
 </body>
