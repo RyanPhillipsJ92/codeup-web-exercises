@@ -48,15 +48,15 @@
  *          Based on the name of the key
  *****************************************************************/
 
-// var person = {
-// 	name: 'codeup',
-// 	age: 4
-// };
+var personA = {
+	name: 'codeup',
+	age: 4
+};
 
 // old way
-//
-// var name = person.name;
-// var age = person.age;
+
+// var name = personA.name;
+// var age = personA.age;
 //
 //
 // console.log(name); // 'codeup'
@@ -65,10 +65,10 @@
 
 //TODO TOGETHER: REFACTOR the above approach using ES6
 
-
-
-
-
+// const {name, age} = personA;
+// console.log(name);
+// console.log(age);
+// console.log(personA)
 
 /*==============================================*/
 
@@ -80,11 +80,11 @@ const pals = {
 };
 
 //old way
-// let myDog = pals.dog;
-// let myCat = pals.cat;
-// let myMouse = pals.mouse;
-//
-//
+let myDog = pals.dog;
+let myCat = pals.cat;
+let myMouse = pals.mouse;
+
+
 // console.log(myDog); //Spike
 // console.log(myCat); //Tom
 // console.log(myMouse); //Jerry
@@ -93,6 +93,9 @@ const pals = {
 //TODO TOGETHER: REFACTOR the above approach using ES6
 //new way
 
+// const {dog: yourdog, cat: yourcat, mouse: yourmouse} = pals;
+// console.log(yourdog, yourcat, yourmouse);
+// console.log(pals);
 
 
 
@@ -104,17 +107,16 @@ const pals = {
 
 //TODO: Use object destructuring with the following object
 
-const theFlash = {
-	name: "Barry Allen",
-	alias: "The Flash",
-	occupation: "Forensic Scientist",
-	powers: "Super Speed"
-}
-
-
-
-
-
+// const theFlash = {
+// 	name: "Barry Allen",
+// 	alias: "The Flash",
+// 	occupation: "Forensic Scientist",
+// 	powers: "Super Speed"
+// }
+//
+// const {alias, powers} = theFlash;
+// console.log(alias);
+// console.log(powers);
 
 
 
@@ -148,19 +150,30 @@ const alphabet = ['A', 'B', 'C', 'D', 'E'];
 
 
 //TODO TOGETHER: new way
-
+// const [ a, b, c ] = alphabet;
+// console.log(a)
+// console.log(b)
+// console.log(c)
 
 
 
 
 //TODO TOGETHER: To skip an element...
 
-
+// const [ a, , c, d ] = alphabet;
+// console.log(a)
+// // console.log(b)
+// console.log(c)
+// console.log(d)
 
 
 
 //TODO TOGETHER: To get all elements...Spread operator *BONUS
-
+// const [ a, b, c, ... rest] = alphabet;
+// console.log(a)
+// console.log(b)
+// console.log(c)
+// console.log(rest)
 
 
 
@@ -180,12 +193,12 @@ const alphabet = ['A', 'B', 'C', 'D', 'E'];
 
 //new way
 function tellMeAbout({name, age}){
-	// console.log(name);
-	// console.log(age);
+	console.log(name);
+	console.log(age);
 }
 
 const person = {
-	name: 'codeup',
+	name: 'Colonel Sanders',
 	age: 4
 };
 
