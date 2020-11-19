@@ -192,17 +192,17 @@ const alphabet = ['A', 'B', 'C', 'D', 'E'];
 
 
 //new way
-function tellMeAbout({name, age}){
-	console.log(name);
-	console.log(age);
-}
-
-const person = {
-	name: 'Colonel Sanders',
-	age: 4
-};
-
-tellMeAbout(person);
+// function tellMeAbout({name, age}){
+// 	console.log(name);
+// 	console.log(age);
+// }
+//
+// const person = {
+// 	name: 'Colonel Sanders',
+// 	age: 4
+// };
+//
+// tellMeAbout(person);
 
 
 /*==============================================*/
@@ -222,8 +222,8 @@ let shape2 = {
 	width: 5
 }
 
-// console.log(getArea(shape1)); //100
-// console.log(getArea(shape2)); //25
+console.log(getArea(shape1)); //100
+console.log(getArea(shape2)); //25
 
 
 //TODO: Refactor the getArea function from above using arrow syntax
