@@ -19,13 +19,21 @@
 // }
 //
 // console.log(oldDog);
+// // //new way
 //
+// let newDog = {
+// 	breed,
+// 	age,
+// 	dogName,
+// 	isCute
+// }
+//
+// console.log(newDog);
 
 
 
 
 
-// //new way
 
 
 
@@ -172,8 +180,8 @@ const alphabet = ['A', 'B', 'C', 'D', 'E'];
 
 //new way
 function tellMeAbout({name, age}){
-	console.log(name);
-	console.log(age);
+	// console.log(name);
+	// console.log(age);
 }
 
 const person = {
@@ -201,8 +209,8 @@ let shape2 = {
 	width: 5
 }
 
-console.log(getArea(shape1)); //100
-console.log(getArea(shape2)); //25
+// console.log(getArea(shape1)); //100
+// console.log(getArea(shape2)); //25
 
 
 //TODO: Refactor the getArea function from above using arrow syntax

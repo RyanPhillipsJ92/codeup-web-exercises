@@ -168,31 +168,35 @@ let items = ['apple', 'grape', 'orange'];
  *****************************/
 
 
-const arr = ["one", "two", "three"];
-for (let ele of arr) {
-    console.log(ele);
-}
-
+// const arr = ["one", "two", "three"];
+// for (let ele of arr) {
+//     console.log(ele);
+// }
+//
+// let arr2 = ["one", "two", "three"];
+// for (let ele of arr2) {
+// 	console.log(ele);
+// }
 
 
 
 
 /*==============================================*/
-//TODO: Using for of loops, log each instructors name
+//TODO: Using for of loops, log each day
 
 // const days = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
-
-
-
-
-
+// for (let day of days){
+// 	console.log(day)
+// }
 
 /*==============================================*/
 
 //TODO: Using for of loops, log each instructors name
 
 // const instructors = ["Vivian", "Sophie", "Justin", "Casey", "David"]
-
+// for (let instructor of instructors){
+// 	console.log(instructor);
+// }
 
 
 
@@ -202,12 +206,11 @@ for (let ele of arr) {
  *****************************/
 //TODO TOGETHER: Rewrite the following function using arrow function syntax
 
-
-function sayHello(name){
-	return `Hello ${name}`;
-}
-
-
+// function sayHello(name){
+// 	return `Hello ${name}`;
+// }
+// const sayHello = (name) => `Hello ${name}`;
+// console.log(sayHello('ryan'))
 
 
 
@@ -220,10 +223,11 @@ function sayHello(name){
 /*==============================================*/
 //TODO TOGETHER: Rewrite the following function using arrow function syntax
 
-function sum(a,b){
-	return a + b;
-}
-
+// function sum(a,b){
+// 	return a + b;
+// }
+// const sum = (a,b) => a+b;
+// console.log(sum(5, 3))
 
 
 // console.log(sum(5, 3)); //8
@@ -236,15 +240,27 @@ function sum(a,b){
 /*==============================================*/
 //TODO: Rewrite the following function using arrow function syntax
 
-function addOne(arg1) {
+function addOneA(arg1) {
     return arg1 + 1;
 }
+
+//refactor, remove function add =>
+let addOneB = (arg1) => {
+	return arg1 + 1;
+}
+
+//** Remove curly braces
+let addOneC = (arg1) => arg1 + 1 +1;
+
+// Remove parens if only 1 input
+
+let addOneD = arg1 => arg1 + 1;
 
 
 // console.log(addOneA(2));
 // console.log(addOneB(2));
 // console.log(addOneC(2));
-// console.log(addOneD(2));
+// console.log(addOneD(5));
 
 
 
@@ -258,18 +274,20 @@ function addOne(arg1) {
 //TODO Together: Refactor the following using ES6
 
 // old way
-function sayHello(name) {
-	if (typeof name === 'undefined') {
-		name = 'World';
-	}
-	return 'Hello, ' + name + '!';
-}
+// function sayHello(name) {
+// 	if (typeof name === 'undefined') {
+// 		name = 'World';
+// 	}
+// 	return 'Hello, ' + name + '!';
+// }
+// function sayHello(name = 'World'){
+// 	return `Hello ${name}`;
+// }
 
+const sayHello = (name = "World") => `Hello ${name}`;
 
-
-
-// console.log(sayHello());; // "Hello, World!"
-// console.log(sayHello('codeup'));; // "Hello, codeup!"
+console.log(sayHello());; // "Hello, World!"
+console.log(sayHello('codeup'));; // "Hello, codeup!"
 
 
 
