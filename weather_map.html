@@ -143,25 +143,26 @@
         // ****** INPUT BOX PASSING GEOLOCATION VIA SEARCH ********
         $('#userInput').change(function (event) {
             console.log($('#userInput').val());
-           var longLat;
+           var longLat = [];
             var userEntry = geocode($('#userInput').val(), mapboxToken).then(function (results) {
-                longLat = results;
-                console.log(longLat);
-                console.log(results);
+                longLat[0] = results[0];
+                longLat[1] = results[1]
+                console.log(longLat[0], longLat[1]);
                 userMarker.setLngLat(longLat);
-                map.flyTo({
-// These options control the ending camera position: centered at the target, at zoom level 9, and north up.
-                    center: [userMarker],
-                    zoom: 9,
-                    bearing: 0,
-// These options control the flight curve, making it move slowly and zoom out almost completely before starting to pan.
-                    speed: 0.6, // make the flying slow
-                    curve: 1, // change the speed at which it zooms out
-// this animation is considered essential with respect to prefers-reduced-motion
-                    essential: true
-                });
-                // setCenter(results);
-                // userMarker.setLngLat(map.getCenter());
+                map.setCenter([longLat[0],longLat[1]])
+//                 map.flyTo({
+// // These options control the ending camera position: centered at the target, at zoom level 9, and north up.
+//                     center: [userMarker],
+//                     zoom: 9,
+//                     bearing: 0,
+// // These options control the flight curve, making it move slowly and zoom out almost completely before starting to pan.
+//                     speed: 0.6, // make the flying slow
+//                     curve: 1, // change the speed at which it zooms out
+// // this animation is considered essential with respect to prefers-reduced-motion
+//                     essential: true
+//                 });
+//                 // setCenter(results);
+//                 // userMarker.setLngLat(map.getCenter());
             });
         });
 
