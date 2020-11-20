@@ -48,8 +48,8 @@ const totalYears = users.reduce((years, user) => {
     return years + user.yearsOfExperience;
 },0);
 let averageExperience = totalYears/users.length;
-console.log(`total years worked by all : ${totalYears}`)
-console.log(`total of people counted : ${users.length}`)
+// console.log(`total years worked by all : ${totalYears}`)
+// console.log(`total of people counted : ${users.length}`)
 console.log(`the average experience : ${averageExperience}`);
 
 
