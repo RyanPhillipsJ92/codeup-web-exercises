@@ -88,3 +88,21 @@ const instructorNames = users.reduce((accum, {name}) => {
 }, 'Your instructors are :').slice(0, -2) + ".";
 
 console.log(instructorNames);
+
+
+// bonus
+
+//add all languages using reduce
+// convert to set
+//convert set back to array
+
+const allLanguages = users.reduce((accum, curr) => {
+    return accum.concat(curr.languages);
+}, []);
+console.log(allLanguages);
+const uniqueLanguages = new Set(allLanguages)
+console.log(uniqueLanguages)
+const arrUnique = Array.from(uniqueLanguages)
+console.log(arrUnique)
+
+
