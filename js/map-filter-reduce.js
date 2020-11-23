@@ -53,13 +53,23 @@ let averageExperience = totalYears/users.length;
 console.log(`the average experience : ${averageExperience}`);
 
 
+// const longestEmail = users.reduce((currentEmail, user) => {
+//     if (user.email.length > currentEmail.length){
+//         currentEmail = user.email
+//     }
+//     return currentEmail
+// }, "");
+// console.log(longestEmail);
+
 const longestEmail = users.reduce((currentEmail, user) => {
-    if (user.email.length > currentEmail.length){
-        currentEmail = user.email
-    }
-    return currentEmail
-}, "");
+    return (user.email.length > currentEmail.length) ? user.email : currentEmail;
+}, " ");
 console.log(longestEmail);
+
+
+
+
+
 
 const userNames = users.reduce((names, user) => {
     return `${names} ${user.name}`
@@ -71,3 +81,10 @@ const singleString = users.reduce(function (currentstring, instructors){
     return ` ${currentstring}  ${instructors.name}`
 }, 'your instructors are')
 console.log(singleString)
+
+//**** BEST WAY ********
+const instructorNames = users.reduce((accum, {name}) => {
+    return `${accum} ${name} ,`;
+}, 'Your instructors are :').slice(0, -2) + ".";
+
+console.log(instructorNames);
